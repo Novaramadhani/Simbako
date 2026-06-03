@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="DatabaseHellper\" />
     <Folder Include="Model\" />
     <Folder Include="Controllers\" />
     <Folder Include="Resource\" />

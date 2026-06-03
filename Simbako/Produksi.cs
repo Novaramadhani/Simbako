@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 // File: Produksi.cs
-namespace SIMBAKO
+namespace Simbako
 {
     public class Produksi
     {

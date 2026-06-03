@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 // File: Panen.cs
-namespace SIMBAKO
+namespace Simbako
 {
     public class Panen
     {

@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace SIMBAKO
+namespace Simbako
 {
     public partial class Form1 : Form
     {
@@ -36,7 +36,7 @@ namespace SIMBAKO
             }
         }
 
-        // Tombol Masuk sebagai Petani
+        // Tombol Masuk sebagai Petani (langsung, tanpa login)
         private void btnPetani_Click(object sender, EventArgs e)
         {
             FormPetani formPetani = new FormPetani();

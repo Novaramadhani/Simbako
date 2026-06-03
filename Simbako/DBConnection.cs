@@ -1,12 +1,12 @@
 ﻿using Npgsql;
 
-namespace SIMBAKO
+namespace Simbako
 {
     public class DBConnection
     {
         // Ganti sesuai pengaturan PostgreSQL kamu
         private static string connString =
-            "Host=localhost;Port=5432;Database=simbako;Username=postgres;Password=12345";
+            "Host=localhost;Port=5432;Database=simbako;Username=postgres;Password=novania";
 
         public static NpgsqlConnection GetConnection()
         {

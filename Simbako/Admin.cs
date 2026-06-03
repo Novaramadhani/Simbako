@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 // File: Admin.cs
-namespace SIMBAKO
+namespace Simbako
 {
     public class Admin : User
     {
