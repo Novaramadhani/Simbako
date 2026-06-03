@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 
+// File: User.cs
 namespace SIMBAKO
 {
     public abstract class User
     {
         public int Id { get; set; }
-        public string Nama { get; set; }
-        public string NoHp { get; set; }
+        public string Nama { get; set; } = string.Empty;
+        public string NoHp { get; set; } = string.Empty;
 
-        // Method abstract - wajib di-override oleh subclass
         public abstract string GetRole();
     }
 }

@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 
+// File: Admin.cs
 namespace SIMBAKO
 {
     public class Admin : User
     {
-        public string Username { get; set; }
-        public string Password { get; set; }
+        public string Username { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
 
-        public override string GetRole()
-        {
-            return "Admin";
-        }
+        public override string GetRole() => "Admin";
 
         public bool Login(string username, string password)
         {

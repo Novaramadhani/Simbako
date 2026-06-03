@@ -34,9 +34,9 @@
             lbPassword = new Label();
             txtPassword = new TextBox();
             btnLogin = new Button();
-            btnpetani = new Button();
+            btnPetani = new Button();
             panel1 = new Panel();
-            btncustomer = new Button();
+            btnCustomer = new Button();
             lb = new Label();
             label1 = new Label();
             label3 = new Label();
@@ -101,15 +101,15 @@
             btnLogin.UseVisualStyleBackColor = false;
             btnLogin.Click += btnLogin_Click;
             // 
-            // btnpetani
+            // btnPetani
             // 
-            btnpetani.Location = new Point(165, 312);
-            btnpetani.Name = "btnpetani";
-            btnpetani.Size = new Size(168, 29);
-            btnpetani.TabIndex = 6;
-            btnpetani.Text = "Masuk sebagai petani";
-            btnpetani.UseVisualStyleBackColor = true;
-            btnpetani.Click += button1_Click;
+            btnPetani.Location = new Point(165, 312);
+            btnPetani.Name = "btnPetani";
+            btnPetani.Size = new Size(168, 29);
+            btnPetani.TabIndex = 6;
+            btnPetani.Text = "Masuk sebagai petani";
+            btnPetani.UseVisualStyleBackColor = true;
+            btnPetani.Click += button1_Click;
             // 
             // panel1
             // 
@@ -124,14 +124,15 @@
             panel1.TabIndex = 7;
             panel1.Paint += panel1_Paint;
             // 
-            // btncustomer
+            // btnCustomer
             // 
-            btncustomer.Location = new Point(339, 312);
-            btncustomer.Name = "btncustomer";
-            btncustomer.Size = new Size(181, 29);
-            btncustomer.TabIndex = 8;
-            btncustomer.Text = "Masuk sebagai customer";
-            btncustomer.UseVisualStyleBackColor = true;
+            btnCustomer.Location = new Point(339, 312);
+            btnCustomer.Name = "btnCustomer";
+            btnCustomer.Size = new Size(181, 29);
+            btnCustomer.TabIndex = 8;
+            btnCustomer.Text = "Masuk sebagai customer";
+            btnCustomer.UseVisualStyleBackColor = true;
+            btnCustomer.Click += btnCustomer_Click;
             // 
             // lb
             // 
@@ -188,9 +189,9 @@
             Controls.Add(label3);
             Controls.Add(label1);
             Controls.Add(lb);
-            Controls.Add(btncustomer);
+            Controls.Add(btnCustomer);
             Controls.Add(panel1);
-            Controls.Add(btnpetani);
+            Controls.Add(btnPetani);
             Controls.Add(label2);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
@@ -209,9 +210,9 @@
         private Label lbPassword;
         private TextBox txtPassword;
         private Button btnLogin;
-        private Button btnpetani;
+        private Button btnPetani;
         private Panel panel1;
-        private Button btncustomer;
+        private Button btnCustomer;
         private Label lb;
         private Label label1;
         private Label label3;
