@@ -79,13 +79,21 @@ namespace Simbako
             if (e.RowIndex >= 0)
             {
                 var row = dgvProduksi.Rows[e.RowIndex];
-                selectedId = Convert.ToInt32(row.Cells[0].Value);
-                cmbldPanen.Text = row.Cells[1].Value.ToString();
-                cmbJenisProses.Text = row.Cells[2].Value.ToString();
-                cmbStatus.Text = row.Cells[3].Value.ToString();
-                txtHasil.Text = row.Cells[4].Value?.ToString() ?? "";
+
+                // ID Produksi wajib ada, jadi langsung Convert.ToInt32
+                if (int.TryParse(Convert.ToString(row.Cells[0].Value), out int id))
+                    selectedId = id;
+                else
+                    selectedId = -1;
+
+                // Sisanya aman pakai Convert.ToString (tidak error kalau null)
+                cmbldPanen.Text = Convert.ToString(row.Cells[1].Value);
+                cmbJenisProses.Text = Convert.ToString(row.Cells[2].Value);
+                cmbStatus.Text = Convert.ToString(row.Cells[3].Value);
+                txtHasil.Text = Convert.ToString(row.Cells[4].Value);
             }
         }
+
 
         // Simpan data produksi baru
         private void btnSimpan_Click(object sender, EventArgs e)
