@@ -78,7 +78,6 @@ namespace Simbako
                 using var conn = DBConnection.GetConnection();
                 conn.Open();
 
-                // Simpan atau ambil customer
                 var cmdCust = new NpgsqlCommand(
                     "INSERT INTO customer (nama_customer, no_hp) VALUES (@n,@hp) RETURNING id_customer", conn);
                 cmdCust.Parameters.AddWithValue("n", txtNamaCustomer.Text);
@@ -88,7 +87,6 @@ namespace Simbako
                 decimal jml = decimal.Parse(txtJumlah.Text);
                 decimal total = hargaSatuan * jml;
 
-                // Simpan penjualan
                 var cmdJual = new NpgsqlCommand(
                     "INSERT INTO penjualan (id_customer, id_produk, jumlah, total_harga) " +
                     "VALUES (@ic, @ip, @j, @t)", conn);
@@ -98,7 +96,6 @@ namespace Simbako
                 cmdJual.Parameters.AddWithValue("t", total);
                 cmdJual.ExecuteNonQuery();
 
-                // Kurangi stok
                 var cmdStok = new NpgsqlCommand(
                     "UPDATE produk SET stok = stok - @j WHERE id_produk = @ip", conn);
                 cmdStok.Parameters.AddWithValue("j", jml);
@@ -144,6 +141,16 @@ namespace Simbako
         }
 
         private void btnRefresh_Click(object sender, EventArgs e) => LoadData();
+
+        // 🔧 Tambahan event handler kosong untuk label/textbox agar tidak error
+        private void label1_Click(object sender, EventArgs e) { }
+        private void label2_Click(object sender, EventArgs e) { }
+        private void label3_Click(object sender, EventArgs e) { }
+        private void label4_Click(object sender, EventArgs e) { }
+        private void label5_Click(object sender, EventArgs e) { }
+        private void lblTotal_Click(object sender, EventArgs e) { }
+        private void txtJumlah_TextChanged(object sender, EventArgs e) { }
+        private void txtNamaCustomer_TextChanged(object sender, EventArgs e) { }
+        private void txtNoHP_TextChanged(object sender, EventArgs e) { }
     }
 }
-

@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Simbako
@@ -15,50 +10,68 @@ namespace Simbako
             InitializeComponent();
         }
 
-        // Menu Panen
+        // Event handler untuk Load (Form2_Load)
+        private void Form2_Load(object sender, EventArgs e)
+        {
+            // Bisa dikosongkan atau isi sesuai kebutuhan
+            // Contoh: MessageBox.Show("Dashboard Admin siap digunakan!");
+        }
+
+        // Event handler untuk label1_Click
+        private void label1_Click(object sender, EventArgs e)
+        {
+            // Bisa dikosongkan atau isi sesuai kebutuhan
+            // Contoh: MessageBox.Show("Label diklik!");
+        }
+
+        // Event handler untuk flowLayoutPanel2_Paint
+        private void flowLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+            // Bisa dikosongkan atau isi sesuai kebutuhan
+            // Contoh: e.Graphics.DrawRectangle(Pens.Black, flowLayoutPanel2.ClientRectangle);
+        }
+
+        // Event handler untuk menu strip
         private void panenToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Navigasi ke FormPanen
             FormPanen formPanen = new FormPanen();
-            formPanen.ShowDialog();
+            formPanen.Show();
         }
 
-        // Menu Produksi
         private void produksiToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Navigasi ke FormProduksi
             FormProduksi formProduksi = new FormProduksi();
-            formProduksi.ShowDialog();
+            formProduksi.Show();
         }
 
-        // Menu Produk
         private void produkToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Navigasi ke FormProduk
             FormProduk formProduk = new FormProduk();
-            formProduk.ShowDialog();
+            formProduk.Show();
         }
 
-        // Menu Penjualan
         private void penjualanToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Navigasi ke FormPenjualan
             FormPenjualan formPenjualan = new FormPenjualan();
-            formPenjualan.ShowDialog();
+            formPenjualan.Show();
         }
 
-        // Menu Laporan
         private void laporanToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Navigasi ke FormLaporan
             FormLaporan formLaporan = new FormLaporan();
-            formLaporan.ShowDialog();
+            formLaporan.Show();
         }
 
-        // Menu Keluar
         private void keluarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Yakin ingin keluar?", "Konfirmasi",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                Application.Restart();
-            }
+            // Tutup dashboard dan kembali ke Form1 (login/utama)
+            this.Close();
+            Application.OpenForms["Form1"]?.Show();
         }
     }
 }
-

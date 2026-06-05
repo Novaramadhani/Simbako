@@ -2,15 +2,8 @@
 {
     partial class FormPanen
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,14 +15,13 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             dgvPanen = new DataGridView();
             panel1 = new Panel();
+            btnKeluar = new Button();
+            label5 = new Label();
+            dtpTanggal = new DateTimePicker();
             btnRefresh = new Button();
             btnVerifikasi = new Button();
             btnHapus = new Button();
@@ -42,8 +34,6 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            dtpTanggal = new DateTimePicker();
-            label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvPanen).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -54,12 +44,13 @@
             dgvPanen.Location = new Point(12, 12);
             dgvPanen.Name = "dgvPanen";
             dgvPanen.RowHeadersWidth = 51;
-            dgvPanen.Size = new Size(776, 288);
+            dgvPanen.Size = new Size(776, 174);
             dgvPanen.TabIndex = 0;
-            dgvPanen.CellContentClick += dgvPanen_CellContentClick;
+            dgvPanen.CellClick += dgvPanen_CellClick;
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnKeluar);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(dtpTanggal);
             panel1.Controls.Add(btnRefresh);
@@ -74,10 +65,36 @@
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(32, 118);
+            panel1.Location = new Point(12, 227);
             panel1.Name = "panel1";
-            panel1.Size = new Size(734, 172);
+            panel1.Size = new Size(776, 184);
             panel1.TabIndex = 1;
+            // 
+            // btnKeluar
+            // 
+            btnKeluar.Location = new Point(517, 139);
+            btnKeluar.Name = "btnKeluar";
+            btnKeluar.Size = new Size(94, 29);
+            btnKeluar.TabIndex = 15;
+            btnKeluar.Text = "Keluar";
+            btnKeluar.UseVisualStyleBackColor = true;
+            btnKeluar.Click += btnKeluar_Click;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(360, 14);
+            label5.Name = "label5";
+            label5.Size = new Size(104, 20);
+            label5.TabIndex = 14;
+            label5.Text = "Tanggal Panen";
+            // 
+            // dtpTanggal
+            // 
+            dtpTanggal.Location = new Point(360, 37);
+            dtpTanggal.Name = "dtpTanggal";
+            dtpTanggal.Size = new Size(342, 27);
+            dtpTanggal.TabIndex = 13;
             // 
             // btnRefresh
             // 
@@ -132,7 +149,7 @@
             // cmbKualitas
             // 
             cmbKualitas.FormattingEnabled = true;
-            cmbKualitas.Items.AddRange(new object[] { "A", "B", "C" });
+            cmbKualitas.Items.AddRange(new object[] { "Sangat Baik", "Bagus", "Kurang Baik", "Bosok" });
             cmbKualitas.Location = new Point(360, 102);
             cmbKualitas.Name = "cmbKualitas";
             cmbKualitas.Size = new Size(342, 28);
@@ -194,22 +211,6 @@
             label1.Text = "Nama Petani";
             label1.Click += label1_Click;
             // 
-            // dtpTanggal
-            // 
-            dtpTanggal.Location = new Point(360, 37);
-            dtpTanggal.Name = "dtpTanggal";
-            dtpTanggal.Size = new Size(342, 27);
-            dtpTanggal.TabIndex = 13;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(360, 14);
-            label5.Name = "label5";
-            label5.Size = new Size(104, 20);
-            label5.TabIndex = 14;
-            label5.Text = "Tanggal Panen";
-            // 
             // FormPanen
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -219,6 +220,7 @@
             Controls.Add(dgvPanen);
             Name = "FormPanen";
             Text = "Manajemen Panen";
+            Load += FormPanen_Load;
             ((System.ComponentModel.ISupportInitialize)dgvPanen).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -243,5 +245,6 @@
         private Button btnSimpan;
         private Label label5;
         private DateTimePicker dtpTanggal;
+        private Button btnKeluar;
     }
 }

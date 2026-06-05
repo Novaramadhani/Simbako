@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SIMBAKO
+namespace Simbako
 {
     public class Petani : User
     {

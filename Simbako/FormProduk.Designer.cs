@@ -47,16 +47,16 @@
             // dgvProduk
             // 
             dgvProduk.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProduk.Location = new Point(12, 76);
+            dgvProduk.Location = new Point(12, 36);
             dgvProduk.Name = "dgvProduk";
             dgvProduk.RowHeadersWidth = 51;
-            dgvProduk.Size = new Size(776, 245);
+            dgvProduk.Size = new Size(776, 119);
             dgvProduk.TabIndex = 0;
             dgvProduk.CellContentClick += dgvProduk_CellContentClick;
             // 
             // txtNamaProduk
             // 
-            txtNamaProduk.Location = new Point(40, 128);
+            txtNamaProduk.Location = new Point(29, 206);
             txtNamaProduk.Name = "txtNamaProduk";
             txtNamaProduk.Size = new Size(348, 27);
             txtNamaProduk.TabIndex = 1;
@@ -64,7 +64,7 @@
             // 
             // txtHarga
             // 
-            txtHarga.Location = new Point(40, 209);
+            txtHarga.Location = new Point(29, 283);
             txtHarga.Name = "txtHarga";
             txtHarga.Size = new Size(348, 27);
             txtHarga.TabIndex = 2;
@@ -72,7 +72,7 @@
             // 
             // txtStok
             // 
-            txtStok.Location = new Point(411, 128);
+            txtStok.Location = new Point(408, 206);
             txtStok.Name = "txtStok";
             txtStok.Size = new Size(329, 27);
             txtStok.TabIndex = 3;
@@ -80,7 +80,7 @@
             // 
             // txtKualitas
             // 
-            txtKualitas.Location = new Point(411, 209);
+            txtKualitas.Location = new Point(408, 283);
             txtKualitas.Name = "txtKualitas";
             txtKualitas.Size = new Size(329, 27);
             txtKualitas.TabIndex = 4;
@@ -89,7 +89,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(40, 105);
+            label1.Location = new Point(29, 183);
             label1.Name = "label1";
             label1.Size = new Size(99, 20);
             label1.TabIndex = 5;
@@ -99,7 +99,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(40, 186);
+            label2.Location = new Point(29, 260);
             label2.Name = "label2";
             label2.Size = new Size(96, 20);
             label2.TabIndex = 6;
@@ -109,7 +109,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(411, 105);
+            label3.Location = new Point(408, 183);
             label3.Name = "label3";
             label3.Size = new Size(68, 20);
             label3.TabIndex = 7;
@@ -119,7 +119,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(411, 186);
+            label4.Location = new Point(408, 260);
             label4.Name = "label4";
             label4.Size = new Size(65, 20);
             label4.TabIndex = 8;
@@ -128,7 +128,7 @@
             // 
             // btnSimpan
             // 
-            btnSimpan.Location = new Point(40, 282);
+            btnSimpan.Location = new Point(34, 345);
             btnSimpan.Name = "btnSimpan";
             btnSimpan.Size = new Size(94, 29);
             btnSimpan.TabIndex = 9;
@@ -138,7 +138,7 @@
             // 
             // btnEdit
             // 
-            btnEdit.Location = new Point(191, 282);
+            btnEdit.Location = new Point(134, 345);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(94, 29);
             btnEdit.TabIndex = 10;
@@ -148,7 +148,7 @@
             // 
             // btnHapus
             // 
-            btnHapus.Location = new Point(348, 282);
+            btnHapus.Location = new Point(234, 345);
             btnHapus.Name = "btnHapus";
             btnHapus.Size = new Size(94, 29);
             btnHapus.TabIndex = 11;
@@ -158,7 +158,7 @@
             // 
             // btnRefresh
             // 
-            btnRefresh.Location = new Point(513, 282);
+            btnRefresh.Location = new Point(334, 345);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(94, 29);
             btnRefresh.TabIndex = 12;
@@ -170,7 +170,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 391);
             Controls.Add(btnRefresh);
             Controls.Add(btnHapus);
             Controls.Add(btnEdit);

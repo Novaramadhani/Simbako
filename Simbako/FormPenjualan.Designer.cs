@@ -171,7 +171,7 @@
             btnHitung.TabIndex = 13;
             btnHitung.Text = "Hitung Total";
             btnHitung.UseVisualStyleBackColor = true;
-            btnHitung.Click += button1_Click;
+            btnHitung.Click += btnHitung_Click;
             // 
             // btnSimpan
             // 
@@ -190,7 +190,7 @@
             btnNota.TabIndex = 15;
             btnNota.Text = "Cetak Nota";
             btnNota.UseVisualStyleBackColor = true;
-            btnNota.Click += button3_Click;
+            btnNota.Click += btnNota_Click;
             // 
             // btnRefresh
             // 
