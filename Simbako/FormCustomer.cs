@@ -1,132 +1,132 @@
 ﻿using Npgsql;
 using Simbako;
 using System;
+using System.Data;
 using System.Windows.Forms;
 
 namespace Simbako
 {
     public partial class FormCustomer : Form
     {
-        private int selectedProdukId = -1;
-        private decimal hargaSatuan = 0;
-        private string lastNota = "";
-        private string selectedProdukName = "";
-
         public FormCustomer()
         {
             InitializeComponent();
         }
 
-        private void FormCustomer_Load(object sender, EventArgs e) => LoadProduk();
+        private void FormCustomer_Load(object sender, EventArgs e)
+        {
+            LoadProduk();
+            LoadDataPenjualan();
+        }
 
         private void LoadProduk()
         {
-            using var conn = DBConnection.GetConnection();
-            conn.Open();
-            var cmd = new NpgsqlCommand(
-                "SELECT id_produk, nama_produk, stok, harga, kualitas FROM produk WHERE stok > 0", conn);
-            var adapter = new NpgsqlDataAdapter(cmd);
-            var dt = new System.Data.DataTable();
-            adapter.Fill(dt);
-            dgvProduk.DataSource = dt;
-            dgvProduk.Columns[0].HeaderText = "ID";
-            dgvProduk.Columns[1].HeaderText = "Nama Produk";
-            dgvProduk.Columns[2].HeaderText = "Stok (kg)";
-            dgvProduk.Columns[3].HeaderText = "Harga/kg";
-            dgvProduk.Columns[4].HeaderText = "Kualitas";
-        }
-
-        private void dgvProduk_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
+            try
             {
-                var row = dgvProduk.Rows[e.RowIndex];
-                selectedProdukId = Convert.ToInt32(row.Cells[0].Value);
-                selectedProdukName = row.Cells[1].Value?.ToString() ?? "";
-                hargaSatuan = Convert.ToDecimal(row.Cells[3].Value);
-                lblHarga.Text = $"Harga: Rp {hargaSatuan:N0}/kg";
+                using var conn = DBConnection.GetConnection();
+                conn.Open();
+                var cmd = new NpgsqlCommand("SELECT id_produk, nama_produk, harga FROM produk", conn);
+                var adapter = new NpgsqlDataAdapter(cmd);
+                var dt = new DataTable();
+                adapter.Fill(dt);
+
+                cmbNamaProduk.DataSource = dt;
+                cmbNamaProduk.DisplayMember = "nama_produk"; // tampilkan nama
+                cmbNamaProduk.ValueMember = "id_produk";     // simpan id
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error load produk: " + ex.Message);
             }
         }
 
-        private void btnBeli_Click(object sender, EventArgs e)
+        private void LoadDataPenjualan()
         {
-            if (selectedProdukId < 0 || string.IsNullOrEmpty(txtNama.Text))
+            try
             {
-                MessageBox.Show("Pilih produk dan isi nama!"); return;
+                using var conn = DBConnection.GetConnection();
+                conn.Open();
+                var cmd = new NpgsqlCommand(
+                    "SELECT p.id_penjualan, p.tanggal_penjualan, p.jumlah, p.total_harga, pr.nama_produk " +
+                    "FROM penjualan p " +
+                    "JOIN produk pr ON p.id_produk = pr.id_produk " +
+                    "ORDER BY p.id_penjualan DESC", conn);
+
+                var adapter = new NpgsqlDataAdapter(cmd);
+                var dt = new DataTable();
+                adapter.Fill(dt);
+                dgvProduk.DataSource = dt;
+
+                dgvProduk.Columns[0].HeaderText = "ID Penjualan";
+                dgvProduk.Columns[1].HeaderText = "Tanggal";
+                dgvProduk.Columns[2].HeaderText = "Jumlah (kg)";
+                dgvProduk.Columns[3].HeaderText = "Total Harga";
+                dgvProduk.Columns[4].HeaderText = "Nama Produk";
             }
-            if (!decimal.TryParse(txtJumlah.Text, out decimal jml) || jml <= 0)
+            catch (Exception ex)
             {
-                MessageBox.Show("Jumlah tidak valid!"); return;
+                MessageBox.Show("Error load penjualan: " + ex.Message);
             }
+        }
+
+        private void btnBeli_Click_1(object sender, EventArgs e)
+        {
             try
             {
                 using var conn = DBConnection.GetConnection();
                 conn.Open();
 
-                // Insert customer
-                var cmdC = new NpgsqlCommand(
-                    "INSERT INTO customer (nama_customer, no_hp) VALUES (@n,@hp) RETURNING id_customer", conn);
-                cmdC.Parameters.AddWithValue("n", txtNama.Text);
-                cmdC.Parameters.AddWithValue("hp", txtNoHP.Text ?? "");
-                int idC = Convert.ToInt32(cmdC.ExecuteScalar());
+                // Ambil harga produk dari ComboBox DataSource
+                DataRowView drv = cmbNamaProduk.SelectedItem as DataRowView;
+                decimal harga = Convert.ToDecimal(drv["harga"]);
+                decimal jumlah = decimal.Parse(txtJumlah.Text);
+                decimal total = harga * jumlah;
 
-                decimal total = hargaSatuan * jml;
+                var cmd = new NpgsqlCommand(
+                    "INSERT INTO penjualan (id_customer, id_produk, tanggal_penjualan, jumlah, total_harga) " +
+                    "VALUES (@c,@p,@t,@j,@th)", conn);
 
-                var cmdJ = new NpgsqlCommand(
-                    "INSERT INTO penjualan (id_customer, id_produk, jumlah, total_harga) " +
-                    "VALUES (@ic, @ip, @j, @t)", conn);
-                cmdJ.Parameters.AddWithValue("ic", idC);
-                cmdJ.Parameters.AddWithValue("ip", selectedProdukId);
-                cmdJ.Parameters.AddWithValue("j", jml);
-                cmdJ.Parameters.AddWithValue("t", total);
-                cmdJ.ExecuteNonQuery();
+                // sementara id_customer isi dummy (misal 1) kalau belum ada tabel customer
+                cmd.Parameters.AddWithValue("c", 1);
+                cmd.Parameters.AddWithValue("p", Convert.ToInt32(cmbNamaProduk.SelectedValue));
+                cmd.Parameters.AddWithValue("t", DateTime.Now.Date);
+                cmd.Parameters.AddWithValue("j", jumlah);
+                cmd.Parameters.AddWithValue("th", total);
+                cmd.ExecuteNonQuery();
 
-                var cmdS = new NpgsqlCommand(
-                    "UPDATE produk SET stok=stok-@j WHERE id_produk=@ip", conn);
-                cmdS.Parameters.AddWithValue("j", jml);
-                cmdS.Parameters.AddWithValue("ip", selectedProdukId);
-                cmdS.ExecuteNonQuery();
+                lblHarga.Text = "Harga : " + harga.ToString("N0");
+                lblTotal.Text = "Total : " + total.ToString("N0");
 
-                Penjualan p = new Penjualan { Jumlah = jml };
-                lastNota = p.CetakNota(selectedProdukName, txtNama.Text);
-                lblTotal.Text = $"Total: Rp {total:N0}";
-
-                MessageBox.Show("Pembelian berhasil!", "Sukses",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadProduk();
+                MessageBox.Show("Pembelian berhasil!");
+                LoadDataPenjualan();
             }
-            catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error beli produk: " + ex.Message);
+            }
         }
 
-        private void btnNota_Click(object sender, EventArgs e)
+        private void btnNota_Click_1(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(lastNota))
-                MessageBox.Show("Belum ada transaksi.");
-            else
-                MessageBox.Show(lastNota, "Nota Pembelian",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"Nota:\nNama: {txtNama.Text}\nNo HP: {txtNoHP.Text}\nJumlah: {txtJumlah.Text} kg\nProduk: {cmbNamaProduk.Text}\n{lblHarga.Text}\n{lblTotal.Text}");
         }
 
-        private void btnKeluar_Click(object sender, EventArgs e)
+        private void btnRefresh_Click(object sender, EventArgs e) => LoadDataPenjualan();
+
+        private void btnKeluar_Click_1(object sender, EventArgs e)
         {
             this.Close();
-            Application.OpenForms["Form1"]?.Show();
         }
 
-        // 🔧 Tambahan untuk menghindari error Designer
-        private void label6_Click(object sender, EventArgs e)
-        {
-            // Kosongkan atau isi sesuai kebutuhan
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-            // Kosongkan atau isi sesuai kebutuhan
-        }
-
-        private void txtJumlah_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        // Event handler kosong agar Designer tidak error
+        private void dgvProduk_CellClick(object sender, DataGridViewCellEventArgs e) { }
+        private void dgvProduk_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+        private void txtNama_TextChanged(object sender, EventArgs e) { }
+        private void txtNoHP_TextChanged(object sender, EventArgs e) { }
+        private void txtJumlah_TextChanged(object sender, EventArgs e) { }
+        private void cmbNamaProduk_SelectedIndexChanged(object sender, EventArgs e) { }
+        private void panel1_Paint(object sender, PaintEventArgs e) { }
+        private void lblHarga_Click(object sender, EventArgs e) { }
+        private void label6_Click(object sender, EventArgs e) { }
     }
 }

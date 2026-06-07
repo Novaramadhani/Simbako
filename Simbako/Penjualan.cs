@@ -1,33 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Simbako
 {
     public class Penjualan
     {
-        public int IdPenjualan { get; set; }
-        public int IdCustomer { get; set; }
-        public int IdProduk { get; set; }
-        public DateTime TanggalPenjualan { get; set; } = DateTime.Now;
         public decimal Jumlah { get; set; }
-        public decimal TotalHarga { get; set; }
 
         public decimal BuatTransaksi(decimal hargaSatuan, decimal jumlah)
         {
-            TotalHarga = hargaSatuan * jumlah;
-            return TotalHarga;
+            Jumlah = jumlah;
+            return hargaSatuan * jumlah;
         }
 
-        public string CetakNota(string namaProduk, string namaCustomer)
+        public string CetakNota(string namaProduk, string namaCustomer, decimal total)
         {
-            return $"=== NOTA SIMBAKO ===\n" +
-                   $"Tanggal  : {TanggalPenjualan:dd/MM/yyyy}\n" +
-                   $"Pembeli  : {namaCustomer}\n" +
-                   $"Produk   : {namaProduk}\n" +
-                   $"Jumlah   : {Jumlah} kg\n" +
-                   $"Total    : Rp {TotalHarga:N0}\n" +
-                   $"====================";
+            return
+$@"=== NOTA SIMBAKO ===
+Tanggal : {DateTime.Now:dd/MM/yyyy}
+Pembeli : {namaCustomer}
+Produk  : {namaProduk}
+Jumlah  : {Jumlah} kg
+Total   : Rp {total:N0}
+====================";
         }
     }
 }

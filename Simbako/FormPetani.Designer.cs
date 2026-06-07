@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            btnSimpanPanen = new Button();
+            label5 = new Label();
+            label4 = new Label();
+            label3 = new Label();
+            label2 = new Label();
+            cmbKualitas = new ComboBox();
+            dtpTanggal = new DateTimePicker();
+            txtJumlah = new TextBox();
             txtNamaPetani = new TextBox();
             label1 = new Label();
-            txtJumlah = new TextBox();
-            dtpTanggal = new DateTimePicker();
-            cmbKualitas = new ComboBox();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            btnSimpanPanen = new Button();
             btnLihatStatus = new Button();
             btnKeluar = new Button();
             dgvRiwayatPanen = new DataGridView();
@@ -64,6 +64,77 @@
             panel1.Size = new Size(723, 250);
             panel1.TabIndex = 0;
             // 
+            // btnSimpanPanen
+            // 
+            btnSimpanPanen.Location = new Point(271, 191);
+            btnSimpanPanen.Name = "btnSimpanPanen";
+            btnSimpanPanen.Size = new Size(163, 29);
+            btnSimpanPanen.TabIndex = 9;
+            btnSimpanPanen.Text = "Kirim Data Panen";
+            btnSimpanPanen.UseVisualStyleBackColor = true;
+            btnSimpanPanen.Click += btnSimpanPanen_Click;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(364, 108);
+            label5.Name = "label5";
+            label5.Size = new Size(61, 20);
+            label5.TabIndex = 8;
+            label5.Text = "Kualitas";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(364, 47);
+            label4.Name = "label4";
+            label4.Size = new Size(104, 20);
+            label4.TabIndex = 7;
+            label4.Text = "Tanggal Panen";
+            label4.Click += label4_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(28, 109);
+            label3.Name = "label3";
+            label3.Size = new Size(83, 20);
+            label3.TabIndex = 6;
+            label3.Text = "Jumlah(Kg)";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(28, 47);
+            label2.Name = "label2";
+            label2.Size = new Size(93, 20);
+            label2.TabIndex = 5;
+            label2.Text = "Nama Petani";
+            // 
+            // cmbKualitas
+            // 
+            cmbKualitas.FormattingEnabled = true;
+            cmbKualitas.Items.AddRange(new object[] { "Sangat Baik", "Bagus", "Kurang Baik", "Bosok" });
+            cmbKualitas.Location = new Point(364, 131);
+            cmbKualitas.Name = "cmbKualitas";
+            cmbKualitas.Size = new Size(319, 28);
+            cmbKualitas.TabIndex = 4;
+            cmbKualitas.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            // 
+            // dtpTanggal
+            // 
+            dtpTanggal.Location = new Point(364, 70);
+            dtpTanggal.Name = "dtpTanggal";
+            dtpTanggal.Size = new Size(319, 27);
+            dtpTanggal.TabIndex = 3;
+            // 
+            // txtJumlah
+            // 
+            txtJumlah.Location = new Point(28, 132);
+            txtJumlah.Name = "txtJumlah";
+            txtJumlah.Size = new Size(313, 27);
+            txtJumlah.TabIndex = 1;
+            // 
             // txtNamaPetani
             // 
             txtNamaPetani.Location = new Point(28, 70);
@@ -82,76 +153,6 @@
             label1.TabIndex = 1;
             label1.Text = "Portal Petani - Input Panen";
             // 
-            // txtJumlah
-            // 
-            txtJumlah.Location = new Point(28, 132);
-            txtJumlah.Name = "txtJumlah";
-            txtJumlah.Size = new Size(313, 27);
-            txtJumlah.TabIndex = 1;
-            // 
-            // dtpTanggal
-            // 
-            dtpTanggal.Location = new Point(364, 70);
-            dtpTanggal.Name = "dtpTanggal";
-            dtpTanggal.Size = new Size(319, 27);
-            dtpTanggal.TabIndex = 3;
-            // 
-            // cmbKualitas
-            // 
-            cmbKualitas.FormattingEnabled = true;
-            cmbKualitas.Items.AddRange(new object[] { "A", "B", "C" });
-            cmbKualitas.Location = new Point(364, 131);
-            cmbKualitas.Name = "cmbKualitas";
-            cmbKualitas.Size = new Size(319, 28);
-            cmbKualitas.TabIndex = 4;
-            cmbKualitas.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(28, 47);
-            label2.Name = "label2";
-            label2.Size = new Size(93, 20);
-            label2.TabIndex = 5;
-            label2.Text = "Nama Petani";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(28, 109);
-            label3.Name = "label3";
-            label3.Size = new Size(83, 20);
-            label3.TabIndex = 6;
-            label3.Text = "Jumlah(Kg)";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(364, 47);
-            label4.Name = "label4";
-            label4.Size = new Size(104, 20);
-            label4.TabIndex = 7;
-            label4.Text = "Tanggal Panen";
-            label4.Click += label4_Click;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(364, 108);
-            label5.Name = "label5";
-            label5.Size = new Size(61, 20);
-            label5.TabIndex = 8;
-            label5.Text = "Kualitas";
-            // 
-            // btnSimpanPanen
-            // 
-            btnSimpanPanen.Location = new Point(271, 191);
-            btnSimpanPanen.Name = "btnSimpanPanen";
-            btnSimpanPanen.Size = new Size(163, 29);
-            btnSimpanPanen.TabIndex = 9;
-            btnSimpanPanen.Text = "Kirim Data Panen";
-            btnSimpanPanen.UseVisualStyleBackColor = true;
-            // 
             // btnLihatStatus
             // 
             btnLihatStatus.Location = new Point(559, 491);
@@ -160,6 +161,7 @@
             btnLihatStatus.TabIndex = 10;
             btnLihatStatus.Text = "Refresh";
             btnLihatStatus.UseVisualStyleBackColor = true;
+            btnLihatStatus.Click += btnLihatStatus_Click_1;
             // 
             // btnKeluar
             // 
@@ -169,20 +171,21 @@
             btnKeluar.TabIndex = 11;
             btnKeluar.Text = "Keluar";
             btnKeluar.UseVisualStyleBackColor = true;
+            btnKeluar.Click += btnKeluar_Click_1;
             // 
             // dgvRiwayatPanen
             // 
             dgvRiwayatPanen.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvRiwayatPanen.Location = new Point(80, 385);
+            dgvRiwayatPanen.Location = new Point(80, 369);
             dgvRiwayatPanen.Name = "dgvRiwayatPanen";
             dgvRiwayatPanen.RowHeadersWidth = 51;
-            dgvRiwayatPanen.Size = new Size(723, 100);
+            dgvRiwayatPanen.Size = new Size(723, 116);
             dgvRiwayatPanen.TabIndex = 12;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(80, 362);
+            label6.Location = new Point(80, 346);
             label6.Name = "label6";
             label6.Size = new Size(139, 20);
             label6.TabIndex = 13;

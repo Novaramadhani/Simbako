@@ -16,7 +16,7 @@ namespace Simbako
         // Load data saat form dibuka
         private void FormPanen_Load(object sender, EventArgs e)
         {
-            // Isi pilihan kualitas
+            // Isi pilihan kualitas sesuai enum
             cmbKualitas.Items.Clear();
             cmbKualitas.Items.Add("Sangat Baik");
             cmbKualitas.Items.Add("Bagus");
@@ -103,10 +103,10 @@ namespace Simbako
                 }
                 int idPetani = Convert.ToInt32(idPetaniObj);
 
-                // Insert panen
+                // Insert panen dengan cast enum
                 var cmdPanen = new NpgsqlCommand(
-                    "INSERT INTO public.panen (id_petani, tanggal_panen, jumlah_panen, kualitas) " +
-                    "VALUES (@idp, @tgl, @jml, @kual)", conn);
+                    "INSERT INTO public.panen (id_petani, tanggal_panen, jumlah_panen, kualitas, status_verifikasi) " +
+                    "VALUES (@idp, @tgl, @jml, @kual::kualitas_enum, 'Menunggu')", conn);
                 cmdPanen.Parameters.AddWithValue("idp", idPetani);
                 cmdPanen.Parameters.AddWithValue("tgl", dtpTanggal.Value.Date);
                 cmdPanen.Parameters.AddWithValue("jml", decimal.Parse(txtJumlah.Text));
@@ -132,7 +132,7 @@ namespace Simbako
                 using var conn = DBConnection.GetConnection();
                 conn.Open();
                 var cmd = new NpgsqlCommand(
-                    "UPDATE public.panen SET tanggal_panen=@tgl, jumlah_panen=@jml, kualitas=@kual WHERE id_panen=@id", conn);
+                    "UPDATE public.panen SET tanggal_panen=@tgl, jumlah_panen=@jml, kualitas=@kual::kualitas_enum WHERE id_panen=@id", conn);
                 cmd.Parameters.AddWithValue("tgl", dtpTanggal.Value.Date);
                 cmd.Parameters.AddWithValue("jml", decimal.Parse(txtJumlah.Text));
                 cmd.Parameters.AddWithValue("kual", cmbKualitas.Text);
@@ -193,7 +193,6 @@ namespace Simbako
             this.Close(); // menutup form Panen
         }
 
-
         private void ClearForm()
         {
             txtNamaPetani.Clear();
@@ -211,6 +210,5 @@ namespace Simbako
         private void label3_Click(object sender, EventArgs e) { }
         private void label4_Click(object sender, EventArgs e) { }
         private void dgvPanen_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
-
     }
 }

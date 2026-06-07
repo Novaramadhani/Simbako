@@ -38,6 +38,7 @@
             label1 = new Label();
             flowLayoutPanel2 = new FlowLayoutPanel();
             menuStrip1.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
@@ -55,62 +56,63 @@
             panenToolStripMenuItem.Name = "panenToolStripMenuItem";
             panenToolStripMenuItem.Size = new Size(62, 24);
             panenToolStripMenuItem.Text = "Panen";
-            panenToolStripMenuItem.Click += this.panenToolStripMenuItem_Click;
+            panenToolStripMenuItem.Click += panenToolStripMenuItem_Click;
             // 
             // produksiToolStripMenuItem
             // 
             produksiToolStripMenuItem.Name = "produksiToolStripMenuItem";
             produksiToolStripMenuItem.Size = new Size(79, 24);
             produksiToolStripMenuItem.Text = "Produksi";
-            produksiToolStripMenuItem.Click += this.produksiToolStripMenuItem_Click;
+            produksiToolStripMenuItem.Click += produksiToolStripMenuItem_Click;
             // 
             // produkToolStripMenuItem
             // 
             produkToolStripMenuItem.Name = "produkToolStripMenuItem";
             produkToolStripMenuItem.Size = new Size(69, 24);
             produkToolStripMenuItem.Text = "Produk";
-            produkToolStripMenuItem.Click += this.produkToolStripMenuItem_Click;
+            produkToolStripMenuItem.Click += produkToolStripMenuItem_Click;
             // 
             // penjualanToolStripMenuItem
             // 
             penjualanToolStripMenuItem.Name = "penjualanToolStripMenuItem";
             penjualanToolStripMenuItem.Size = new Size(86, 24);
             penjualanToolStripMenuItem.Text = "Penjualan";
-            penjualanToolStripMenuItem.Click += this.penjualanToolStripMenuItem_Click;
+            penjualanToolStripMenuItem.Click += penjualanToolStripMenuItem_Click;
             // 
             // laporanToolStripMenuItem
             // 
             laporanToolStripMenuItem.Name = "laporanToolStripMenuItem";
             laporanToolStripMenuItem.Size = new Size(77, 24);
             laporanToolStripMenuItem.Text = "Laporan";
-            laporanToolStripMenuItem.Click += this.laporanToolStripMenuItem_Click;
+            laporanToolStripMenuItem.Click += laporanToolStripMenuItem_Click;
             // 
             // keluarToolStripMenuItem
             // 
             keluarToolStripMenuItem.Name = "keluarToolStripMenuItem";
             keluarToolStripMenuItem.Size = new Size(65, 24);
             keluarToolStripMenuItem.Text = "Keluar";
-            keluarToolStripMenuItem.Click += this.keluarToolStripMenuItem_Click;
+            keluarToolStripMenuItem.Click += keluarToolStripMenuItem_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.BackColor = SystemColors.ButtonHighlight;
             label1.Font = new Font("Segoe UI Historic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(313, 51);
+            label1.Location = new Point(3, 0);
             label1.Name = "label1";
-            label1.Size = new Size(297, 31);
+            label1.Size = new Size(210, 62);
             label1.TabIndex = 1;
             label1.Text = "'Selamat Datang, Admin!'";
-            label1.Click += this.label1_Click;
+            label1.Click += label1_Click;
             // 
             // flowLayoutPanel2
             // 
-            flowLayoutPanel2.Location = new Point(335, 112);
+            flowLayoutPanel2.Controls.Add(label1);
+            flowLayoutPanel2.Location = new Point(331, 176);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
             flowLayoutPanel2.Size = new Size(250, 125);
             flowLayoutPanel2.TabIndex = 4;
-            flowLayoutPanel2.Paint += this.flowLayoutPanel2_Paint;
+            flowLayoutPanel2.Paint += flowLayoutPanel2_Paint;
             // 
             // FormDashboardAdmin
             // 
@@ -119,7 +121,6 @@
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(920, 553);
             Controls.Add(flowLayoutPanel2);
-            Controls.Add(label1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "FormDashboardAdmin";
@@ -128,6 +129,8 @@
             Load += Form2_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            flowLayoutPanel2.ResumeLayout(false);
+            flowLayoutPanel2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }

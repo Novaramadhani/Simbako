@@ -30,30 +30,31 @@
         {
             tabControl1 = new TabControl();
             Panen = new TabPage();
+            dgvLapPanen = new DataGridView();
             Produksi = new TabPage();
+            dgvLapProduksi = new DataGridView();
+            Penjualan = new TabPage();
+            dgvLapPenjualan = new DataGridView();
+            Stok = new TabPage();
+            dgvLapStok = new DataGridView();
             btnLapPanen = new Button();
             btnLapProduksi = new Button();
             btnLapPenjualan = new Button();
             btnLapStok = new Button();
-            Penjualan = new TabPage();
-            Stok = new TabPage();
-            dgvLapProduksi = new DataGridView();
-            dgvLapPanen = new DataGridView();
-            dgvLapPenjualan = new DataGridView();
-            dgvLapStok = new DataGridView();
             panel1 = new Panel();
-            label1 = new Label();
-            label2 = new Label();
-            dtpDari = new DateTimePicker();
             dtpSampai = new DateTimePicker();
+            dtpDari = new DateTimePicker();
+            label2 = new Label();
+            label1 = new Label();
+            btnKeluar = new Button();
             tabControl1.SuspendLayout();
             Panen.SuspendLayout();
-            Produksi.SuspendLayout();
-            Penjualan.SuspendLayout();
-            Stok.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvLapProduksi).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvLapPanen).BeginInit();
+            Produksi.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvLapProduksi).BeginInit();
+            Penjualan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvLapPenjualan).BeginInit();
+            Stok.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvLapStok).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -64,6 +65,7 @@
             tabControl1.Controls.Add(Produksi);
             tabControl1.Controls.Add(Penjualan);
             tabControl1.Controls.Add(Stok);
+            tabControl1.Font = new Font("Segoe UI Emoji", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tabControl1.Location = new Point(12, 141);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -73,7 +75,7 @@
             // Panen
             // 
             Panen.Controls.Add(dgvLapPanen);
-            Panen.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Panen.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Panen.Location = new Point(4, 29);
             Panen.Name = "Panen";
             Panen.Padding = new Padding(3);
@@ -81,6 +83,15 @@
             Panen.TabIndex = 0;
             Panen.Text = "Panen";
             Panen.UseVisualStyleBackColor = true;
+            // 
+            // dgvLapPanen
+            // 
+            dgvLapPanen.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvLapPanen.Location = new Point(6, 6);
+            dgvLapPanen.Name = "dgvLapPanen";
+            dgvLapPanen.RowHeadersWidth = 51;
+            dgvLapPanen.Size = new Size(756, 127);
+            dgvLapPanen.TabIndex = 0;
             // 
             // Produksi
             // 
@@ -94,41 +105,14 @@
             Produksi.Text = "Produksi";
             Produksi.UseVisualStyleBackColor = true;
             // 
-            // btnLapPanen
+            // dgvLapProduksi
             // 
-            btnLapPanen.Location = new Point(22, 333);
-            btnLapPanen.Name = "btnLapPanen";
-            btnLapPanen.Size = new Size(132, 29);
-            btnLapPanen.TabIndex = 1;
-            btnLapPanen.Text = "Laporan Panen";
-            btnLapPanen.UseVisualStyleBackColor = true;
-            // 
-            // btnLapProduksi
-            // 
-            btnLapProduksi.Location = new Point(169, 333);
-            btnLapProduksi.Name = "btnLapProduksi";
-            btnLapProduksi.Size = new Size(132, 29);
-            btnLapProduksi.TabIndex = 2;
-            btnLapProduksi.Text = "Laporan Produksi";
-            btnLapProduksi.UseVisualStyleBackColor = true;
-            // 
-            // btnLapPenjualan
-            // 
-            btnLapPenjualan.Location = new Point(319, 333);
-            btnLapPenjualan.Name = "btnLapPenjualan";
-            btnLapPenjualan.Size = new Size(150, 29);
-            btnLapPenjualan.TabIndex = 3;
-            btnLapPenjualan.Text = "Laporan Penjualan";
-            btnLapPenjualan.UseVisualStyleBackColor = true;
-            // 
-            // btnLapStok
-            // 
-            btnLapStok.Location = new Point(488, 333);
-            btnLapStok.Name = "btnLapStok";
-            btnLapStok.Size = new Size(132, 29);
-            btnLapStok.TabIndex = 4;
-            btnLapStok.Text = " Laporan Stok";
-            btnLapStok.UseVisualStyleBackColor = true;
+            dgvLapProduksi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvLapProduksi.Location = new Point(6, 6);
+            dgvLapProduksi.Name = "dgvLapProduksi";
+            dgvLapProduksi.RowHeadersWidth = 51;
+            dgvLapProduksi.Size = new Size(756, 127);
+            dgvLapProduksi.TabIndex = 0;
             // 
             // Penjualan
             // 
@@ -141,6 +125,16 @@
             Penjualan.Text = "Penjualan";
             Penjualan.UseVisualStyleBackColor = true;
             // 
+            // dgvLapPenjualan
+            // 
+            dgvLapPenjualan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvLapPenjualan.Location = new Point(6, 6);
+            dgvLapPenjualan.Name = "dgvLapPenjualan";
+            dgvLapPenjualan.RowHeadersWidth = 51;
+            dgvLapPenjualan.Size = new Size(756, 127);
+            dgvLapPenjualan.TabIndex = 0;
+            dgvLapPenjualan.CellContentClick += dataGridView3_CellContentClick;
+            // 
             // Stok
             // 
             Stok.Controls.Add(dgvLapStok);
@@ -152,34 +146,6 @@
             Stok.Text = "Stok";
             Stok.UseVisualStyleBackColor = true;
             // 
-            // dgvLapProduksi
-            // 
-            dgvLapProduksi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvLapProduksi.Location = new Point(6, 6);
-            dgvLapProduksi.Name = "dgvLapProduksi";
-            dgvLapProduksi.RowHeadersWidth = 51;
-            dgvLapProduksi.Size = new Size(756, 127);
-            dgvLapProduksi.TabIndex = 0;
-            // 
-            // dgvLapPanen
-            // 
-            dgvLapPanen.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvLapPanen.Location = new Point(6, 6);
-            dgvLapPanen.Name = "dgvLapPanen";
-            dgvLapPanen.RowHeadersWidth = 51;
-            dgvLapPanen.Size = new Size(756, 127);
-            dgvLapPanen.TabIndex = 0;
-            // 
-            // dgvLapPenjualan
-            // 
-            dgvLapPenjualan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvLapPenjualan.Location = new Point(6, 6);
-            dgvLapPenjualan.Name = "dgvLapPenjualan";
-            dgvLapPenjualan.RowHeadersWidth = 51;
-            dgvLapPenjualan.Size = new Size(756, 127);
-            dgvLapPenjualan.TabIndex = 0;
-            dgvLapPenjualan.CellContentClick += dataGridView3_CellContentClick;
-            // 
             // dgvLapStok
             // 
             dgvLapStok.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -189,6 +155,46 @@
             dgvLapStok.Size = new Size(756, 127);
             dgvLapStok.TabIndex = 5;
             dgvLapStok.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // btnLapPanen
+            // 
+            btnLapPanen.Location = new Point(22, 333);
+            btnLapPanen.Name = "btnLapPanen";
+            btnLapPanen.Size = new Size(132, 29);
+            btnLapPanen.TabIndex = 1;
+            btnLapPanen.Text = "Laporan Panen";
+            btnLapPanen.UseVisualStyleBackColor = true;
+            btnLapPanen.Click += btnLapPanen_Click_1;
+            // 
+            // btnLapProduksi
+            // 
+            btnLapProduksi.Location = new Point(160, 333);
+            btnLapProduksi.Name = "btnLapProduksi";
+            btnLapProduksi.Size = new Size(132, 29);
+            btnLapProduksi.TabIndex = 2;
+            btnLapProduksi.Text = "Laporan Produksi";
+            btnLapProduksi.UseVisualStyleBackColor = true;
+            btnLapProduksi.Click += btnLapProduksi_Click_1;
+            // 
+            // btnLapPenjualan
+            // 
+            btnLapPenjualan.Location = new Point(298, 333);
+            btnLapPenjualan.Name = "btnLapPenjualan";
+            btnLapPenjualan.Size = new Size(150, 29);
+            btnLapPenjualan.TabIndex = 3;
+            btnLapPenjualan.Text = "Laporan Penjualan";
+            btnLapPenjualan.UseVisualStyleBackColor = true;
+            btnLapPenjualan.Click += btnLapPenjualan_Click_1;
+            // 
+            // btnLapStok
+            // 
+            btnLapStok.Location = new Point(454, 333);
+            btnLapStok.Name = "btnLapStok";
+            btnLapStok.Size = new Size(132, 29);
+            btnLapStok.TabIndex = 4;
+            btnLapStok.Text = " Laporan Stok";
+            btnLapStok.UseVisualStyleBackColor = true;
+            btnLapStok.Click += btnLapStok_Click_1;
             // 
             // panel1
             // 
@@ -201,15 +207,19 @@
             panel1.Size = new Size(756, 37);
             panel1.TabIndex = 5;
             // 
-            // label1
+            // dtpSampai
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(12, 5);
-            label1.Name = "label1";
-            label1.Size = new Size(63, 27);
-            label1.TabIndex = 0;
-            label1.Text = "Dari :";
+            dtpSampai.Location = new Point(494, 6);
+            dtpSampai.Name = "dtpSampai";
+            dtpSampai.Size = new Size(250, 27);
+            dtpSampai.TabIndex = 3;
+            // 
+            // dtpDari
+            // 
+            dtpDari.Location = new Point(81, 6);
+            dtpDari.Name = "dtpDari";
+            dtpDari.Size = new Size(250, 27);
+            dtpDari.TabIndex = 2;
             // 
             // label2
             // 
@@ -221,25 +231,32 @@
             label2.TabIndex = 1;
             label2.Text = "Sampai :";
             // 
-            // dtpDari
+            // label1
             // 
-            dtpDari.Location = new Point(81, 6);
-            dtpDari.Name = "dtpDari";
-            dtpDari.Size = new Size(250, 27);
-            dtpDari.TabIndex = 2;
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(12, 5);
+            label1.Name = "label1";
+            label1.Size = new Size(63, 27);
+            label1.TabIndex = 0;
+            label1.Text = "Dari :";
             // 
-            // dtpSampai
+            // btnKeluar
             // 
-            dtpSampai.Location = new Point(494, 6);
-            dtpSampai.Name = "dtpSampai";
-            dtpSampai.Size = new Size(250, 27);
-            dtpSampai.TabIndex = 3;
+            btnKeluar.Location = new Point(592, 333);
+            btnKeluar.Name = "btnKeluar";
+            btnKeluar.Size = new Size(94, 29);
+            btnKeluar.TabIndex = 6;
+            btnKeluar.Text = "Keluar";
+            btnKeluar.UseVisualStyleBackColor = true;
+            btnKeluar.Click += btnKeluar_Click;
             // 
             // FormLaporan
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 370);
+            Controls.Add(btnKeluar);
             Controls.Add(panel1);
             Controls.Add(btnLapStok);
             Controls.Add(btnLapPenjualan);
@@ -248,14 +265,15 @@
             Controls.Add(tabControl1);
             Name = "FormLaporan";
             Text = "FormLaporan";
+            Load += FormLaporan_Load_1;
             tabControl1.ResumeLayout(false);
             Panen.ResumeLayout(false);
-            Produksi.ResumeLayout(false);
-            Penjualan.ResumeLayout(false);
-            Stok.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvLapProduksi).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvLapPanen).EndInit();
+            Produksi.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvLapProduksi).EndInit();
+            Penjualan.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvLapPenjualan).EndInit();
+            Stok.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvLapStok).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -282,5 +300,6 @@
         private DateTimePicker dtpDari;
         private Label label2;
         private Label label1;
+        private Button btnKeluar;
     }
 }

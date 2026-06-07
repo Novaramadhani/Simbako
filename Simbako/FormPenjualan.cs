@@ -7,7 +7,7 @@ namespace Simbako
 {
     public partial class FormPenjualan : Form
     {
-        private int selectedId = -1;
+        private int? selectedId = null; // aman, nullable
         private decimal hargaSatuan = 0;
         private int idProdukSelected = -1;
 
@@ -24,34 +24,32 @@ namespace Simbako
 
         private void LoadProdukCombo()
         {
-            using var conn = DBConnection.GetConnection();
-            conn.Open();
-            var cmd = new NpgsqlCommand("SELECT id_produk, nama_produk, harga FROM produk WHERE stok > 0", conn);
-            var reader = cmd.ExecuteReader();
             cmbProduk.Items.Clear();
-            while (reader.Read())
-            {
-                cmbProduk.Items.Add(new
-                {
-                    Id = reader.GetInt32(0),
-                    Nama = reader.GetString(1),
-                    Harga = reader.GetDecimal(2),
-                    Display = reader.GetString(1)
-                });
-            }
-            cmbProduk.DisplayMember = "Display";
+            cmbProduk.Items.Add("Tembakau Rajangan");
+            cmbProduk.Items.Add("Tembakau Cerutu");
+            cmbProduk.Items.Add("Tembakau Kretek");
         }
 
         private void cmbProduk_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbProduk.SelectedItem != null)
+            string? namaProduk = cmbProduk.SelectedItem as string;
+            if (!string.IsNullOrEmpty(namaProduk))
             {
-                dynamic item = cmbProduk.SelectedItem;
-                idProdukSelected = item.Id;
-                hargaSatuan = item.Harga;
-                lblHarga.Text = $"Harga: Rp {hargaSatuan:N0}/kg";
+                using var conn = DBConnection.GetConnection();
+                conn.Open();
+                var cmd = new NpgsqlCommand(
+                    "SELECT id_produk, harga FROM produk WHERE nama_produk=@n", conn);
+                cmd.Parameters.AddWithValue("n", namaProduk);
+                var reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    idProdukSelected = reader.GetInt32(0);
+                    hargaSatuan = reader.GetDecimal(1);
+                    lblHarga.Text = $"Harga: Rp {hargaSatuan:N0}/kg";
+                }
             }
         }
+
 
         private void btnHitung_Click(object sender, EventArgs e)
         {
@@ -88,8 +86,8 @@ namespace Simbako
                 decimal total = hargaSatuan * jml;
 
                 var cmdJual = new NpgsqlCommand(
-                    "INSERT INTO penjualan (id_customer, id_produk, jumlah, total_harga) " +
-                    "VALUES (@ic, @ip, @j, @t)", conn);
+    "INSERT INTO penjualan (id_customer, id_produk, jumlah, total_harga, tanggal_penjualan) " +
+    "VALUES (@ic, @ip, @j, @t, NOW())", conn);
                 cmdJual.Parameters.AddWithValue("ic", idCust);
                 cmdJual.Parameters.AddWithValue("ip", idProdukSelected);
                 cmdJual.Parameters.AddWithValue("j", jml);
@@ -110,18 +108,21 @@ namespace Simbako
 
         private void btnNota_Click(object sender, EventArgs e)
         {
-            if (cmbProduk.SelectedItem == null || string.IsNullOrEmpty(txtNamaCustomer.Text))
+            string? namaProduk = cmbProduk.SelectedItem as string;
+            if (string.IsNullOrEmpty(namaProduk) || string.IsNullOrEmpty(txtNamaCustomer.Text))
             {
                 MessageBox.Show("Isi data dulu!"); return;
             }
-            dynamic item = cmbProduk.SelectedItem;
+
             decimal jml = decimal.TryParse(txtJumlah.Text, out decimal j) ? j : 0;
+            decimal total = hargaSatuan * jml;
 
             Penjualan p = new Penjualan { Jumlah = jml };
-            string nota = p.CetakNota(item.Nama, txtNamaCustomer.Text);
+            string nota = p.CetakNota(namaProduk, txtNamaCustomer.Text, total);
             MessageBox.Show(nota, "Nota Transaksi",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
 
         private void LoadData()
         {
@@ -142,7 +143,7 @@ namespace Simbako
 
         private void btnRefresh_Click(object sender, EventArgs e) => LoadData();
 
-        // 🔧 Tambahan event handler kosong untuk label/textbox agar tidak error
+        // 🔧 Tambahan event handler kosong agar Designer tidak error
         private void label1_Click(object sender, EventArgs e) { }
         private void label2_Click(object sender, EventArgs e) { }
         private void label3_Click(object sender, EventArgs e) { }
@@ -152,5 +153,12 @@ namespace Simbako
         private void txtJumlah_TextChanged(object sender, EventArgs e) { }
         private void txtNamaCustomer_TextChanged(object sender, EventArgs e) { }
         private void txtNoHP_TextChanged(object sender, EventArgs e) { }
+
+        private void dgvPenjualan_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+
+        private void btnKeluar_Click(object sender, EventArgs e)
+        {
+            this.Close(); // menutup FormPenjualan, balik ke form sebelumnya
+        }   
     }
 }

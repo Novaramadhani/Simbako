@@ -12,8 +12,17 @@ namespace Simbako
             InitializeComponent();
         }
 
-        private void FormPetani_Load(object sender, EventArgs e)
+        private void FormPetani_Load(object? sender, EventArgs e)
         {
+            // Isi pilihan kualitas sesuai ENUM di PostgreSQL
+            cmbKualitas.Items.Clear();
+            cmbKualitas.Items.AddRange(new object[] {
+                "Sangat Baik",
+                "Bagus",
+                "Kurang Baik",
+                "Bosok"
+            });
+
             // Load semua riwayat panen
             LoadRiwayat();
         }
@@ -37,12 +46,21 @@ namespace Simbako
             catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
         }
 
-        private void btnSimpanPanen_Click(object sender, EventArgs e)
+        private void btnSimpanPanen_Click(object? sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtNamaPetani.Text))
             {
                 MessageBox.Show("Masukkan nama petani!"); return;
             }
+            if (string.IsNullOrEmpty(txtJumlah.Text) || !decimal.TryParse(txtJumlah.Text, out decimal jumlah))
+            {
+                MessageBox.Show("Jumlah panen tidak valid!"); return;
+            }
+            if (string.IsNullOrEmpty(cmbKualitas.Text))
+            {
+                MessageBox.Show("Pilih kualitas panen!"); return;
+            }
+
             try
             {
                 using var conn = DBConnection.GetConnection();
@@ -64,13 +82,13 @@ namespace Simbako
                 }
                 int idPetani = Convert.ToInt32(idObj);
 
-                // Simpan panen
+                // Simpan panen (cast kualitas ke ENUM)
                 var cmdPanen = new NpgsqlCommand(
                     "INSERT INTO panen (id_petani, tanggal_panen, jumlah_panen, kualitas) " +
-                    "VALUES (@idp, @tgl, @jml, @kual)", conn);
+                    "VALUES (@idp, @tgl, @jml, @kual::kualitas_enum)", conn);
                 cmdPanen.Parameters.AddWithValue("idp", idPetani);
                 cmdPanen.Parameters.AddWithValue("tgl", dtpTanggal.Value.Date);
-                cmdPanen.Parameters.AddWithValue("jml", decimal.Parse(txtJumlah.Text));
+                cmdPanen.Parameters.AddWithValue("jml", jumlah);
                 cmdPanen.Parameters.AddWithValue("kual", cmbKualitas.Text);
                 cmdPanen.ExecuteNonQuery();
 
@@ -82,21 +100,23 @@ namespace Simbako
             catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
         }
 
-        private void btnLihatStatus_Click(object sender, EventArgs e)
+        private void btnLihatStatus_Click(object? sender, EventArgs e)
         {
             MessageBox.Show("Fitur monitoring produksi: lihat tab riwayat panen untuk status verifikasi.");
             LoadRiwayat();
         }
 
-        private void btnKeluar_Click(object sender, EventArgs e)
+        private void btnKeluar_Click(object? sender, EventArgs e)
         {
             this.Close();
             Application.OpenForms["Form1"]?.Show();
         }
 
         // 🔧 Tambahan event handler kosong agar Designer tidak error
-        private void label6_Click(object sender, EventArgs e) { }
-        private void label4_Click(object sender, EventArgs e) { }
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) { }
+        private void label6_Click(object? sender, EventArgs e) { }
+        private void label4_Click(object? sender, EventArgs e) { }
+        private void comboBox1_SelectedIndexChanged(object? sender, EventArgs e) { }
+        private void btnKeluar_Click_1(object? sender, EventArgs e) { this.Close(); }
+        private void btnLihatStatus_Click_1(object? sender, EventArgs e) { }
     }
 }

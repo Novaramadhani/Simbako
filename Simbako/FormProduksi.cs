@@ -174,5 +174,10 @@ namespace Simbako
         {
             // Bisa ditambahkan logika kalau perlu
         }
+
+        private void btnKeluar_Click(object sender, EventArgs e)
+        {
+            this.Close(); // menutup FormProduk, otomatis balik ke form sebelumnya
+        }
     }
 }

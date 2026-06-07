@@ -42,6 +42,7 @@
             btnRefresh = new Button();
             panel1 = new Panel();
             cmbJenisProses = new ComboBox();
+            btnKeluar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvProduksi).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -166,6 +167,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnKeluar);
             panel1.Controls.Add(cmbJenisProses);
             panel1.Controls.Add(btnRefresh);
             panel1.Controls.Add(txtHasil);
@@ -192,6 +194,16 @@
             cmbJenisProses.Size = new Size(416, 28);
             cmbJenisProses.TabIndex = 13;
             cmbJenisProses.SelectedIndexChanged += cmbJenisProses_SelectedIndexChanged;
+            // 
+            // btnKeluar
+            // 
+            btnKeluar.Location = new Point(453, 201);
+            btnKeluar.Name = "btnKeluar";
+            btnKeluar.Size = new Size(94, 29);
+            btnKeluar.TabIndex = 14;
+            btnKeluar.Text = "Keluar";
+            btnKeluar.UseVisualStyleBackColor = true;
+            btnKeluar.Click += btnKeluar_Click;
             // 
             // FormProduksi
             // 
@@ -224,5 +236,6 @@
         private Button btnRefresh;
         private Panel panel1;
         private ComboBox cmbJenisProses;
+        private Button btnKeluar;
     }
 }

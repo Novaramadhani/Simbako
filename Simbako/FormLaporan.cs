@@ -92,5 +92,35 @@ namespace Simbako
         {
             // Kosongkan atau isi sesuai kebutuhan
         }
+
+        private void FormLaporan_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnKeluar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnLapPanen_Click_1(object sender, EventArgs e)
+        {
+            this.btnLapPanen.Click += new System.EventHandler(this.btnLapPanen_Click);
+        }
+
+        private void btnLapProduksi_Click_1(object sender, EventArgs e)
+        {
+            this.btnLapProduksi.Click += new System.EventHandler(this.btnLapProduksi_Click);
+        }
+
+        private void btnLapPenjualan_Click_1(object sender, EventArgs e)
+        {
+            this.btnLapPenjualan.Click += new System.EventHandler(this.btnLapPenjualan_Click);
+        }
+
+        private void btnLapStok_Click_1(object sender, EventArgs e)
+        {
+            this.btnLapStok.Click += new System.EventHandler(this.btnLapStok_Click);
+        }
     }
 }

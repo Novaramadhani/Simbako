@@ -31,6 +31,9 @@
             dgvProduk = new DataGridView();
             label1 = new Label();
             panel1 = new Panel();
+            btnRefresh = new Button();
+            label5 = new Label();
+            cmbNamaProduk = new ComboBox();
             panel2 = new Panel();
             lblTotal = new Label();
             lblHarga = new Label();
@@ -51,17 +54,18 @@
             // dgvProduk
             // 
             dgvProduk.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProduk.Location = new Point(26, 59);
+            dgvProduk.Location = new Point(26, 32);
             dgvProduk.Name = "dgvProduk";
             dgvProduk.RowHeadersWidth = 51;
-            dgvProduk.Size = new Size(742, 86);
+            dgvProduk.Size = new Size(742, 113);
             dgvProduk.TabIndex = 0;
             dgvProduk.CellClick += dgvProduk_CellClick;
+            dgvProduk.CellContentClick += dgvProduk_CellContentClick;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(26, 36);
+            label1.Location = new Point(26, 9);
             label1.Name = "label1";
             label1.Size = new Size(167, 20);
             label1.TabIndex = 1;
@@ -69,6 +73,9 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnRefresh);
+            panel1.Controls.Add(label5);
+            panel1.Controls.Add(cmbNamaProduk);
             panel1.Controls.Add(panel2);
             panel1.Controls.Add(txtNoHP);
             panel1.Controls.Add(txtJumlah);
@@ -79,17 +86,45 @@
             panel1.Controls.Add(btnKeluar);
             panel1.Controls.Add(btnNota);
             panel1.Controls.Add(btnBeli);
-            panel1.Location = new Point(26, 190);
+            panel1.Location = new Point(26, 151);
             panel1.Name = "panel1";
-            panel1.Size = new Size(742, 220);
+            panel1.Size = new Size(742, 259);
             panel1.TabIndex = 2;
             panel1.Paint += panel1_Paint;
+            // 
+            // btnRefresh
+            // 
+            btnRefresh.Location = new Point(211, 217);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(94, 29);
+            btnRefresh.TabIndex = 12;
+            btnRefresh.Text = "Refresh";
+            btnRefresh.UseVisualStyleBackColor = true;
+            btnRefresh.Click += btnRefresh_Click;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(354, 96);
+            label5.Name = "label5";
+            label5.Size = new Size(99, 20);
+            label5.TabIndex = 11;
+            label5.Text = "Nama Produk";
+            // 
+            // cmbNamaProduk
+            // 
+            cmbNamaProduk.FormattingEnabled = true;
+            cmbNamaProduk.Location = new Point(354, 118);
+            cmbNamaProduk.Name = "cmbNamaProduk";
+            cmbNamaProduk.Size = new Size(367, 28);
+            cmbNamaProduk.TabIndex = 10;
+            cmbNamaProduk.SelectedIndexChanged += cmbNamaProduk_SelectedIndexChanged;
             // 
             // panel2
             // 
             panel2.Controls.Add(lblTotal);
             panel2.Controls.Add(lblHarga);
-            panel2.Location = new Point(351, 96);
+            panel2.Location = new Point(354, 152);
             panel2.Name = "panel2";
             panel2.Size = new Size(370, 53);
             panel2.TabIndex = 9;
@@ -112,6 +147,7 @@
             lblHarga.Size = new Size(57, 20);
             lblHarga.TabIndex = 0;
             lblHarga.Text = "Harga :";
+            lblHarga.Click += lblHarga_Click;
             // 
             // txtNoHP
             // 
@@ -119,10 +155,11 @@
             txtNoHP.Name = "txtNoHP";
             txtNoHP.Size = new Size(370, 27);
             txtNoHP.TabIndex = 8;
+            txtNoHP.TextChanged += txtNoHP_TextChanged;
             // 
             // txtJumlah
             // 
-            txtJumlah.Location = new Point(14, 119);
+            txtJumlah.Location = new Point(11, 119);
             txtJumlah.Name = "txtJumlah";
             txtJumlah.Size = new Size(311, 27);
             txtJumlah.TabIndex = 7;
@@ -134,6 +171,7 @@
             txtNama.Name = "txtNama";
             txtNama.Size = new Size(311, 27);
             txtNama.TabIndex = 6;
+            txtNama.TextChanged += txtNama_TextChanged;
             // 
             // label4
             // 
@@ -164,30 +202,33 @@
             // 
             // btnKeluar
             // 
-            btnKeluar.Location = new Point(214, 178);
+            btnKeluar.Location = new Point(311, 217);
             btnKeluar.Name = "btnKeluar";
             btnKeluar.Size = new Size(94, 29);
             btnKeluar.TabIndex = 2;
             btnKeluar.Text = "Keluar";
             btnKeluar.UseVisualStyleBackColor = true;
+            btnKeluar.Click += btnKeluar_Click_1;
             // 
             // btnNota
             // 
-            btnNota.Location = new Point(114, 178);
+            btnNota.Location = new Point(111, 217);
             btnNota.Name = "btnNota";
             btnNota.Size = new Size(94, 29);
             btnNota.TabIndex = 1;
             btnNota.Text = "Lihat Nota";
             btnNota.UseVisualStyleBackColor = true;
+            btnNota.Click += btnNota_Click_1;
             // 
             // btnBeli
             // 
-            btnBeli.Location = new Point(14, 178);
+            btnBeli.Location = new Point(11, 217);
             btnBeli.Name = "btnBeli";
             btnBeli.Size = new Size(94, 29);
             btnBeli.TabIndex = 0;
             btnBeli.Text = "Beli Produk";
             btnBeli.UseVisualStyleBackColor = true;
+            btnBeli.Click += btnBeli_Click_1;
             // 
             // FormCustomer
             // 
@@ -225,5 +266,8 @@
         private Panel panel2;
         private Label lblTotal;
         private Label lblHarga;
+        private Label label5;
+        private ComboBox cmbNamaProduk;
+        private Button btnRefresh;
     }
 }

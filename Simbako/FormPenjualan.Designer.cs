@@ -44,6 +44,7 @@
             btnSimpan = new Button();
             btnNota = new Button();
             btnRefresh = new Button();
+            btnKeluar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvPenjualan).BeginInit();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
@@ -51,16 +52,17 @@
             // dgvPenjualan
             // 
             dgvPenjualan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPenjualan.Location = new Point(12, 105);
+            dgvPenjualan.Location = new Point(12, 12);
             dgvPenjualan.Name = "dgvPenjualan";
             dgvPenjualan.RowHeadersWidth = 51;
-            dgvPenjualan.Size = new Size(765, 333);
+            dgvPenjualan.Size = new Size(776, 121);
             dgvPenjualan.TabIndex = 0;
+            dgvPenjualan.CellContentClick += dgvPenjualan_CellContentClick;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(47, 136);
+            label1.Location = new Point(47, 168);
             label1.Name = "label1";
             label1.Size = new Size(116, 20);
             label1.TabIndex = 1;
@@ -70,7 +72,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(50, 221);
+            label2.Location = new Point(50, 223);
             label2.Name = "label2";
             label2.Size = new Size(87, 20);
             label2.TabIndex = 2;
@@ -80,7 +82,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(357, 136);
+            label3.Location = new Point(360, 168);
             label3.Name = "label3";
             label3.Size = new Size(52, 20);
             label3.TabIndex = 3;
@@ -99,7 +101,7 @@
             // 
             // txtJumlah
             // 
-            txtJumlah.Location = new Point(357, 247);
+            txtJumlah.Location = new Point(360, 247);
             txtJumlah.Name = "txtJumlah";
             txtJumlah.Size = new Size(382, 27);
             txtJumlah.TabIndex = 5;
@@ -107,7 +109,7 @@
             // 
             // txtNamaCustomer
             // 
-            txtNamaCustomer.Location = new Point(47, 161);
+            txtNamaCustomer.Location = new Point(47, 191);
             txtNamaCustomer.Name = "txtNamaCustomer";
             txtNamaCustomer.Size = new Size(304, 27);
             txtNamaCustomer.TabIndex = 6;
@@ -115,7 +117,7 @@
             // 
             // txtNoHP
             // 
-            txtNoHP.Location = new Point(357, 161);
+            txtNoHP.Location = new Point(357, 191);
             txtNoHP.Name = "txtNoHP";
             txtNoHP.Size = new Size(382, 27);
             txtNoHP.TabIndex = 8;
@@ -124,6 +126,7 @@
             // cmbProduk
             // 
             cmbProduk.FormattingEnabled = true;
+            cmbProduk.Items.AddRange(new object[] { "Tembakau Rajangan", "Tembakau Cerutu", "Tembakau Kretek" });
             cmbProduk.Location = new Point(50, 246);
             cmbProduk.Name = "cmbProduk";
             cmbProduk.Size = new Size(304, 28);
@@ -174,13 +177,13 @@
             btnHitung.Click += btnHitung_Click;
             // 
             // btnSimpan
-            // 
             btnSimpan.Location = new Point(178, 388);
             btnSimpan.Name = "btnSimpan";
             btnSimpan.Size = new Size(187, 38);
             btnSimpan.TabIndex = 14;
             btnSimpan.Text = "Simpan Transaksi";
             btnSimpan.UseVisualStyleBackColor = true;
+            btnSimpan.Click += btnSimpan_Click;
             // 
             // btnNota
             // 
@@ -201,11 +204,22 @@
             btnRefresh.Text = "Refresh";
             btnRefresh.UseVisualStyleBackColor = true;
             // 
+            // btnKeluar
+            // 
+            btnKeluar.Location = new Point(615, 388);
+            btnKeluar.Name = "btnKeluar";
+            btnKeluar.Size = new Size(116, 38);
+            btnKeluar.TabIndex = 18;
+            btnKeluar.Text = "Keluar";
+            btnKeluar.UseVisualStyleBackColor = true;
+            btnKeluar.Click += btnKeluar_Click;
+            // 
             // FormPenjualan
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnKeluar);
             Controls.Add(btnRefresh);
             Controls.Add(btnNota);
             Controls.Add(btnSimpan);
@@ -247,5 +261,6 @@
         private Button btnSimpan;
         private Button btnNota;
         private Button btnRefresh;
+        private Button btnKeluar;
     }
 }
