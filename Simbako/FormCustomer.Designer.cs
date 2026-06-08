@@ -46,6 +46,8 @@
             btnKeluar = new Button();
             btnNota = new Button();
             btnBeli = new Button();
+            cmbKualitas = new ComboBox();
+            label6 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvProduk).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -73,6 +75,8 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(label6);
+            panel1.Controls.Add(cmbKualitas);
             panel1.Controls.Add(btnRefresh);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(cmbNamaProduk);
@@ -161,7 +165,7 @@
             // 
             txtJumlah.Location = new Point(11, 119);
             txtJumlah.Name = "txtJumlah";
-            txtJumlah.Size = new Size(311, 27);
+            txtJumlah.Size = new Size(314, 27);
             txtJumlah.TabIndex = 7;
             txtJumlah.TextChanged += txtJumlah_TextChanged;
             // 
@@ -230,6 +234,24 @@
             btnBeli.UseVisualStyleBackColor = true;
             btnBeli.Click += btnBeli_Click_1;
             // 
+            // cmbKualitas
+            // 
+            cmbKualitas.FormattingEnabled = true;
+            cmbKualitas.Items.AddRange(new object[] { "Sangat Baik", "Bagus ", "Kurang Baik", "Bosok" });
+            cmbKualitas.Location = new Point(14, 177);
+            cmbKualitas.Name = "cmbKualitas";
+            cmbKualitas.Size = new Size(311, 28);
+            cmbKualitas.TabIndex = 13;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(14, 154);
+            label6.Name = "label6";
+            label6.Size = new Size(61, 20);
+            label6.TabIndex = 14;
+            label6.Text = "Kualitas";
+            // 
             // FormCustomer
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -269,5 +291,7 @@
         private Label label5;
         private ComboBox cmbNamaProduk;
         private Button btnRefresh;
+        private ComboBox cmbKualitas;
+        private Label label6;
     }
 }

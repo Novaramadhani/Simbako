@@ -35,16 +35,12 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
-            btnSimpan = new Button();
-            btnEdit = new Button();
-            btnHapus = new Button();
-            btnRefresh = new Button();
             cmbKualitas = new ComboBox();
             cmbNamaProduk = new ComboBox();
             btnKeluar = new Button();
             label5 = new Label();
             cmbStatusProduksi = new ComboBox();
-            btnUpdateStatus = new Button();
+            btnOlahData = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvProduk).BeginInit();
             SuspendLayout();
             // 
@@ -57,10 +53,11 @@
             dgvProduk.Size = new Size(776, 119);
             dgvProduk.TabIndex = 0;
             dgvProduk.CellClick += dgvProduk_CellClick;
+            dgvProduk.CellContentClick += dgvProduk_CellContentClick;
             // 
             // txtHarga
             // 
-            txtHarga.Location = new Point(408, 182);
+            txtHarga.Location = new Point(34, 235);
             txtHarga.Name = "txtHarga";
             txtHarga.Size = new Size(348, 27);
             txtHarga.TabIndex = 2;
@@ -68,7 +65,7 @@
             // 
             // txtStok
             // 
-            txtStok.Location = new Point(34, 236);
+            txtStok.Location = new Point(408, 181);
             txtStok.Name = "txtStok";
             txtStok.Size = new Size(345, 27);
             txtStok.TabIndex = 3;
@@ -114,46 +111,6 @@
             label4.Text = "Kualitas ";
             label4.Click += label4_Click;
             // 
-            // btnSimpan
-            // 
-            btnSimpan.Location = new Point(34, 345);
-            btnSimpan.Name = "btnSimpan";
-            btnSimpan.Size = new Size(94, 29);
-            btnSimpan.TabIndex = 9;
-            btnSimpan.Text = "Simpan ";
-            btnSimpan.UseVisualStyleBackColor = true;
-            btnSimpan.Click += btnSimpan_Click;
-            // 
-            // btnEdit
-            // 
-            btnEdit.Location = new Point(134, 345);
-            btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(94, 29);
-            btnEdit.TabIndex = 10;
-            btnEdit.Text = "Edit ";
-            btnEdit.UseVisualStyleBackColor = true;
-            btnEdit.Click += btnEdit_Click;
-            // 
-            // btnHapus
-            // 
-            btnHapus.Location = new Point(334, 345);
-            btnHapus.Name = "btnHapus";
-            btnHapus.Size = new Size(94, 29);
-            btnHapus.TabIndex = 11;
-            btnHapus.Text = "Hapus";
-            btnHapus.UseVisualStyleBackColor = true;
-            btnHapus.Click += btnHapus_Click;
-            // 
-            // btnRefresh
-            // 
-            btnRefresh.Location = new Point(434, 345);
-            btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(94, 29);
-            btnRefresh.TabIndex = 12;
-            btnRefresh.Text = "Refresh";
-            btnRefresh.UseVisualStyleBackColor = true;
-            btnRefresh.Click += btnRefresh_Click;
-            // 
             // cmbKualitas
             // 
             cmbKualitas.FormattingEnabled = true;
@@ -174,7 +131,7 @@
             // 
             // btnKeluar
             // 
-            btnKeluar.Location = new Point(534, 345);
+            btnKeluar.Location = new Point(134, 345);
             btnKeluar.Name = "btnKeluar";
             btnKeluar.Size = new Size(94, 29);
             btnKeluar.TabIndex = 15;
@@ -202,31 +159,27 @@
             cmbStatusProduksi.TabIndex = 17;
             cmbStatusProduksi.SelectedIndexChanged += cmbStatusProduksi_SelectedIndexChanged;
             // 
-            // btnUpdateStatus
+            // btnOlahData
             // 
-            btnUpdateStatus.Location = new Point(234, 345);
-            btnUpdateStatus.Name = "btnUpdateStatus";
-            btnUpdateStatus.Size = new Size(94, 29);
-            btnUpdateStatus.TabIndex = 18;
-            btnUpdateStatus.Text = "Update";
-            btnUpdateStatus.UseVisualStyleBackColor = true;
-            btnUpdateStatus.Click += btnUpdateStatus_Click;
+            btnOlahData.Location = new Point(34, 345);
+            btnOlahData.Name = "btnOlahData";
+            btnOlahData.Size = new Size(94, 29);
+            btnOlahData.TabIndex = 19;
+            btnOlahData.Text = "Olah Data";
+            btnOlahData.UseVisualStyleBackColor = true;
+            btnOlahData.Click += btnOlahData_Click;
             // 
             // FormProduk
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 391);
-            Controls.Add(btnUpdateStatus);
+            Controls.Add(btnOlahData);
             Controls.Add(cmbStatusProduksi);
             Controls.Add(label5);
             Controls.Add(btnKeluar);
             Controls.Add(cmbNamaProduk);
             Controls.Add(cmbKualitas);
-            Controls.Add(btnRefresh);
-            Controls.Add(btnHapus);
-            Controls.Add(btnEdit);
-            Controls.Add(btnSimpan);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -251,15 +204,11 @@
         private Label label2;
         private Label label3;
         private Label label4;
-        private Button btnSimpan;
-        private Button btnEdit;
-        private Button btnHapus;
-        private Button btnRefresh;
         private ComboBox cmbKualitas;
         private ComboBox cmbNamaProduk;
         private Button btnKeluar;
         private Label label5;
         private ComboBox cmbStatusProduksi;
-        private Button btnUpdateStatus;
+        private Button btnOlahData;
     }
 }

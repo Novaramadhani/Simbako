@@ -20,11 +20,13 @@ namespace Simbako
             LoadLapPanen();
         }
 
+        // ✅ Tombol langsung panggil fungsi
         private void btnLapPanen_Click(object sender, EventArgs e) => LoadLapPanen();
         private void btnLapProduksi_Click(object sender, EventArgs e) => LoadLapProduksi();
         private void btnLapPenjualan_Click(object sender, EventArgs e) => LoadLapPenjualan();
         private void btnLapStok_Click(object sender, EventArgs e) => LoadLapStok();
 
+        // ✅ Laporan Panen
         private void LoadLapPanen()
         {
             using var conn = DBConnection.GetConnection();
@@ -35,92 +37,95 @@ namespace Simbako
                 "FROM panen p JOIN petani pt ON p.id_petani=pt.id_petani " +
                 "WHERE p.tanggal_panen BETWEEN @dari AND @sampai " +
                 "GROUP BY pt.nama_petani, p.kualitas, p.status_verifikasi", conn);
+
             cmd.Parameters.AddWithValue("dari", dtpDari.Value.Date);
             cmd.Parameters.AddWithValue("sampai", dtpSampai.Value.Date);
+
             var dt = new DataTable();
             new NpgsqlDataAdapter(cmd).Fill(dt);
             dgvLapPanen.DataSource = dt;
         }
 
+        // ✅ Laporan Produksi (detail per proses)
         private void LoadLapProduksi()
         {
             using var conn = DBConnection.GetConnection();
             conn.Open();
             var cmd = new NpgsqlCommand(
-                "SELECT jenis_proses, COUNT(*) AS jumlah, SUM(hasil_produksi) AS total_hasil, status_produksi " +
-                "FROM produksi GROUP BY jenis_proses, status_produksi", conn);
+                "SELECT id_produksi, id_panen, jenis_proses, jumlah_diolah, hasil_produksi, kualitas, status_produksi, tanggal_produksi " +
+                "FROM produksi " +
+                "WHERE tanggal_produksi BETWEEN @dari AND @sampai " +
+                "ORDER BY tanggal_produksi DESC", conn);
+
+            cmd.Parameters.AddWithValue("dari", dtpDari.Value.Date);
+            cmd.Parameters.AddWithValue("sampai", dtpSampai.Value.Date);
+
             var dt = new DataTable();
             new NpgsqlDataAdapter(cmd).Fill(dt);
             dgvLapProduksi.DataSource = dt;
         }
 
+
+        // ✅ Laporan Penjualan (Customer + Produk)
         private void LoadLapPenjualan()
         {
             using var conn = DBConnection.GetConnection();
             conn.Open();
             var cmd = new NpgsqlCommand(
-                "SELECT pr.nama_produk, SUM(pj.jumlah) AS total_terjual, " +
-                "SUM(pj.total_harga) AS total_pendapatan " +
-                "FROM penjualan pj JOIN produk pr ON pj.id_produk=pr.id_produk " +
+                "SELECT pj.tanggal_penjualan, c.nama_customer, pr.nama_produk, pj.kualitas, pj.jumlah, pj.total_harga " +
+                "FROM penjualan pj " +
+                "JOIN produk pr ON pj.id_produk = pr.id_produk " +
+                "JOIN customer c ON pj.id_customer = c.id_customer " +
                 "WHERE pj.tanggal_penjualan BETWEEN @dari AND @sampai " +
-                "GROUP BY pr.nama_produk", conn);
+                "ORDER BY pj.tanggal_penjualan DESC", conn);
+
             cmd.Parameters.AddWithValue("dari", dtpDari.Value.Date);
             cmd.Parameters.AddWithValue("sampai", dtpSampai.Value.Date);
+
             var dt = new DataTable();
             new NpgsqlDataAdapter(cmd).Fill(dt);
             dgvLapPenjualan.DataSource = dt;
+
+            // Optional: ubah header
+            dgvLapPenjualan.Columns[0].HeaderText = "Tanggal";
+            dgvLapPenjualan.Columns[1].HeaderText = "Customer";
+            dgvLapPenjualan.Columns[2].HeaderText = "Produk";
+            dgvLapPenjualan.Columns[3].HeaderText = "Kualitas";
+            dgvLapPenjualan.Columns[4].HeaderText = "Jumlah (kg)";
+            dgvLapPenjualan.Columns[5].HeaderText = "Total Harga (Rp)";
         }
 
+        // ✅ Laporan Stok
         private void LoadLapStok()
         {
             using var conn = DBConnection.GetConnection();
             conn.Open();
             var cmd = new NpgsqlCommand(
-                "SELECT nama_produk, stok, harga, kualitas FROM produk ORDER BY stok ASC", conn);
+                "SELECT id_produk, nama_produk, stok, harga, kualitas, status_verifikasi " +
+                "FROM produk ORDER BY stok ASC", conn);
+
             var dt = new DataTable();
             new NpgsqlDataAdapter(cmd).Fill(dt);
             dgvLapStok.DataSource = dt;
+
+            // Optional: ubah header
+            dgvLapStok.Columns[0].HeaderText = "ID Produk";
+            dgvLapStok.Columns[1].HeaderText = "Produk";
+            dgvLapStok.Columns[2].HeaderText = "Stok";
+            dgvLapStok.Columns[3].HeaderText = "Harga";
+            dgvLapStok.Columns[4].HeaderText = "Kualitas";
+            dgvLapStok.Columns[5].HeaderText = "Status";
         }
 
-        // 🔧 Tambahan untuk menghindari error Designer
-        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            // Kosongkan atau isi sesuai kebutuhan
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            // Kosongkan atau isi sesuai kebutuhan
-        }
-
-        private void FormLaporan_Load_1(object sender, EventArgs e)
-        {
-
-        }
+        // ✅ Tambahan untuk menghindari error Designer
+        private void dgvLapPanen_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+        private void dgvLapPenjualan_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+        private void dgvLapStok_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+        private void dgvLapProduksi_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
 
         private void btnKeluar_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void btnLapPanen_Click_1(object sender, EventArgs e)
-        {
-            this.btnLapPanen.Click += new System.EventHandler(this.btnLapPanen_Click);
-        }
-
-        private void btnLapProduksi_Click_1(object sender, EventArgs e)
-        {
-            this.btnLapProduksi.Click += new System.EventHandler(this.btnLapProduksi_Click);
-        }
-
-        private void btnLapPenjualan_Click_1(object sender, EventArgs e)
-        {
-            this.btnLapPenjualan.Click += new System.EventHandler(this.btnLapPenjualan_Click);
-        }
-
-        private void btnLapStok_Click_1(object sender, EventArgs e)
-        {
-            this.btnLapStok.Click += new System.EventHandler(this.btnLapStok_Click);
         }
     }
 }

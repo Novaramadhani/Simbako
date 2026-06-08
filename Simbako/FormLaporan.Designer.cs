@@ -66,10 +66,10 @@
             tabControl1.Controls.Add(Penjualan);
             tabControl1.Controls.Add(Stok);
             tabControl1.Font = new Font("Segoe UI Emoji", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tabControl1.Location = new Point(12, 141);
+            tabControl1.Location = new Point(12, 75);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(776, 172);
+            tabControl1.Size = new Size(776, 238);
             tabControl1.TabIndex = 0;
             // 
             // Panen
@@ -79,7 +79,7 @@
             Panen.Location = new Point(4, 29);
             Panen.Name = "Panen";
             Panen.Padding = new Padding(3);
-            Panen.Size = new Size(768, 139);
+            Panen.Size = new Size(768, 205);
             Panen.TabIndex = 0;
             Panen.Text = "Panen";
             Panen.UseVisualStyleBackColor = true;
@@ -87,11 +87,12 @@
             // dgvLapPanen
             // 
             dgvLapPanen.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvLapPanen.Location = new Point(6, 6);
+            dgvLapPanen.Location = new Point(6, 3);
             dgvLapPanen.Name = "dgvLapPanen";
             dgvLapPanen.RowHeadersWidth = 51;
-            dgvLapPanen.Size = new Size(756, 127);
+            dgvLapPanen.Size = new Size(756, 196);
             dgvLapPanen.TabIndex = 0;
+            dgvLapPanen.CellContentClick += dgvLapPanen_CellContentClick;
             // 
             // Produksi
             // 
@@ -100,7 +101,7 @@
             Produksi.Location = new Point(4, 29);
             Produksi.Name = "Produksi";
             Produksi.Padding = new Padding(3);
-            Produksi.Size = new Size(768, 139);
+            Produksi.Size = new Size(768, 205);
             Produksi.TabIndex = 1;
             Produksi.Text = "Produksi";
             Produksi.UseVisualStyleBackColor = true;
@@ -108,10 +109,10 @@
             // dgvLapProduksi
             // 
             dgvLapProduksi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvLapProduksi.Location = new Point(6, 6);
+            dgvLapProduksi.Location = new Point(6, 3);
             dgvLapProduksi.Name = "dgvLapProduksi";
             dgvLapProduksi.RowHeadersWidth = 51;
-            dgvLapProduksi.Size = new Size(756, 127);
+            dgvLapProduksi.Size = new Size(756, 196);
             dgvLapProduksi.TabIndex = 0;
             // 
             // Penjualan
@@ -120,7 +121,7 @@
             Penjualan.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Penjualan.Location = new Point(4, 29);
             Penjualan.Name = "Penjualan";
-            Penjualan.Size = new Size(768, 139);
+            Penjualan.Size = new Size(768, 205);
             Penjualan.TabIndex = 2;
             Penjualan.Text = "Penjualan";
             Penjualan.UseVisualStyleBackColor = true;
@@ -128,12 +129,12 @@
             // dgvLapPenjualan
             // 
             dgvLapPenjualan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvLapPenjualan.Location = new Point(6, 6);
+            dgvLapPenjualan.Location = new Point(6, 3);
             dgvLapPenjualan.Name = "dgvLapPenjualan";
             dgvLapPenjualan.RowHeadersWidth = 51;
-            dgvLapPenjualan.Size = new Size(756, 127);
+            dgvLapPenjualan.Size = new Size(756, 196);
             dgvLapPenjualan.TabIndex = 0;
-            dgvLapPenjualan.CellContentClick += dataGridView3_CellContentClick;
+            dgvLapPenjualan.CellContentClick += dgvLapPenjualan_CellContentClick;
             // 
             // Stok
             // 
@@ -141,7 +142,7 @@
             Stok.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Stok.Location = new Point(4, 29);
             Stok.Name = "Stok";
-            Stok.Size = new Size(768, 139);
+            Stok.Size = new Size(768, 205);
             Stok.TabIndex = 3;
             Stok.Text = "Stok";
             Stok.UseVisualStyleBackColor = true;
@@ -149,12 +150,12 @@
             // dgvLapStok
             // 
             dgvLapStok.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvLapStok.Location = new Point(6, 6);
+            dgvLapStok.Location = new Point(6, 3);
             dgvLapStok.Name = "dgvLapStok";
             dgvLapStok.RowHeadersWidth = 51;
-            dgvLapStok.Size = new Size(756, 127);
+            dgvLapStok.Size = new Size(756, 196);
             dgvLapStok.TabIndex = 5;
-            dgvLapStok.CellContentClick += dataGridView1_CellContentClick;
+            dgvLapStok.CellContentClick += dgvLapStok_CellContentClick;
             // 
             // btnLapPanen
             // 
@@ -164,7 +165,7 @@
             btnLapPanen.TabIndex = 1;
             btnLapPanen.Text = "Laporan Panen";
             btnLapPanen.UseVisualStyleBackColor = true;
-            btnLapPanen.Click += btnLapPanen_Click_1;
+            btnLapPanen.Click += btnLapPanen_Click;
             // 
             // btnLapProduksi
             // 
@@ -174,7 +175,7 @@
             btnLapProduksi.TabIndex = 2;
             btnLapProduksi.Text = "Laporan Produksi";
             btnLapProduksi.UseVisualStyleBackColor = true;
-            btnLapProduksi.Click += btnLapProduksi_Click_1;
+            btnLapProduksi.Click += btnLapProduksi_Click;
             // 
             // btnLapPenjualan
             // 
@@ -184,7 +185,7 @@
             btnLapPenjualan.TabIndex = 3;
             btnLapPenjualan.Text = "Laporan Penjualan";
             btnLapPenjualan.UseVisualStyleBackColor = true;
-            btnLapPenjualan.Click += btnLapPenjualan_Click_1;
+            btnLapPenjualan.Click += btnLapPenjualan_Click;
             // 
             // btnLapStok
             // 
@@ -194,7 +195,7 @@
             btnLapStok.TabIndex = 4;
             btnLapStok.Text = " Laporan Stok";
             btnLapStok.UseVisualStyleBackColor = true;
-            btnLapStok.Click += btnLapStok_Click_1;
+            btnLapStok.Click += btnLapStok_Click;
             // 
             // panel1
             // 
@@ -265,7 +266,7 @@
             Controls.Add(tabControl1);
             Name = "FormLaporan";
             Text = "FormLaporan";
-            Load += FormLaporan_Load_1;
+            Load += FormLaporan_Load;
             tabControl1.ResumeLayout(false);
             Panen.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvLapPanen).EndInit();

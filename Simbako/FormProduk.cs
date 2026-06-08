@@ -1,14 +1,11 @@
-﻿using Npgsql;
-using Simbako;
-using System;
+﻿using System;
 using System.Windows.Forms;
+using Npgsql;
 
 namespace Simbako
 {
     public partial class FormProduk : Form
     {
-        private int? selectedId = null;
-
         public FormProduk()
         {
             InitializeComponent();
@@ -16,188 +13,176 @@ namespace Simbako
 
         private void FormProduk_Load(object sender, EventArgs e)
         {
-            // Isi pilihan nama produk
-            cmbNamaProduk.Items.Clear();
-            cmbNamaProduk.Items.Add("Tembakau Rajangan");
-            cmbNamaProduk.Items.Add("Tembakau Cerutu");
-            cmbNamaProduk.Items.Add("Tembakau Kretek");
-
-            // Isi pilihan kualitas
-            cmbKualitas.Items.Clear();
-            cmbKualitas.Items.Add("Sangat Baik");
-            cmbKualitas.Items.Add("Bagus");
-            cmbKualitas.Items.Add("Kurang Baik");
-            cmbKualitas.Items.Add("Bosok");
-
-            // Isi pilihan status produksi/verifikasi
-            cmbStatusProduksi.Items.Clear();
-            cmbStatusProduksi.Items.Add("Pending");
-            cmbStatusProduksi.Items.Add("Siap Jual");
-            cmbStatusProduksi.Items.Add("Ditolak");
-
             LoadData();
-
-            // Hubungkan event CellClick
-            dgvProduk.CellClick += dgvProduk_CellClick;
         }
 
+        // Tampilkan stok panen mentah group by kualitas
         private void LoadData()
         {
             try
             {
                 using var conn = DBConnection.GetConnection();
                 conn.Open();
-                var cmd = new NpgsqlCommand("SELECT * FROM produk ORDER BY id_produk DESC", conn);
+                var cmd = new NpgsqlCommand(
+                    "SELECT kualitas, SUM(jumlah_panen) AS total_panen " +
+                    "FROM panen WHERE status_verifikasi = 'Terverifikasi' " +
+                    "GROUP BY kualitas ORDER BY kualitas", conn);
+
                 var adapter = new NpgsqlDataAdapter(cmd);
                 var dt = new System.Data.DataTable();
                 adapter.Fill(dt);
                 dgvProduk.DataSource = dt;
 
-                dgvProduk.Columns[0].HeaderText = "ID Produk";
-                dgvProduk.Columns[1].HeaderText = "Nama Produk";
-                dgvProduk.Columns[2].HeaderText = "Harga per kg";
-                dgvProduk.Columns[3].HeaderText = "Stok (kg)";
-                dgvProduk.Columns[4].HeaderText = "Kualitas";
-                dgvProduk.Columns[5].HeaderText = "Status Produksi";
+                if (dgvProduk.Columns.Count >= 2)
+                {
+                    dgvProduk.Columns[0].HeaderText = "Kualitas";
+                    dgvProduk.Columns[1].HeaderText = "Jumlah Panen (kg)";
+                }
             }
-            catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
+            catch (Exception ex) { MessageBox.Show("Error load data: " + ex.Message); }
         }
 
+
+        // Klik baris → isi cmbKualitas otomatis
         private void dgvProduk_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow row = dgvProduk.Rows[e.RowIndex];
-
-                // Isi field sesuai data yang dipilih
-                cmbNamaProduk.Text = row.Cells[1].Value.ToString();
-                txtHarga.Text = row.Cells[2].Value.ToString();
-                txtStok.Text = row.Cells[3].Value.ToString();
-                cmbKualitas.Text = row.Cells[4].Value.ToString();
-                cmbStatusProduksi.Text = row.Cells[5].Value.ToString();
+                var row = dgvProduk.Rows[e.RowIndex];
+                cmbKualitas.Text = row.Cells[0].Value?.ToString() ?? "";
             }
         }
 
-        private void btnSimpan_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                using var conn = DBConnection.GetConnection();
-                conn.Open();
-                var cmd = new NpgsqlCommand(
-                    "INSERT INTO produk (nama_produk, harga, stok, kualitas, status_verifikasi) VALUES (@n,@h,@s,@k,@sv)", conn);
-                cmd.Parameters.AddWithValue("n", cmbNamaProduk.Text);
-                cmd.Parameters.AddWithValue("h", decimal.Parse(txtHarga.Text));
-                cmd.Parameters.AddWithValue("s", int.Parse(txtStok.Text));
-                cmd.Parameters.AddWithValue("k", cmbKualitas.Text);
-                cmd.Parameters.AddWithValue("sv", cmbStatusProduksi.Text);
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Produk berhasil disimpan!");
-                LoadData();
-            }
-            catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
-        }
-
-        // Edit Data Produk (nama, harga, stok, kualitas)
-        private void btnEdit_Click(object sender, EventArgs e)
+        // Tombol Olah Data
+        private void btnOlahData_Click(object sender, EventArgs e)
         {
             if (dgvProduk.CurrentRow == null)
             {
-                MessageBox.Show("Pilih data dulu!");
+                MessageBox.Show("Pilih data panen terlebih dahulu!", "Peringatan",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            int id = Convert.ToInt32(dgvProduk.CurrentRow.Cells[0].Value);
+            if (string.IsNullOrEmpty(cmbNamaProduk.Text) ||
+                string.IsNullOrEmpty(cmbKualitas.Text) ||
+                string.IsNullOrEmpty(cmbStatusProduksi.Text))
+            {
+                MessageBox.Show("Lengkapi pilihan produk, kualitas, dan status produksi!",
+                    "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-            if (!decimal.TryParse(txtHarga.Text, out decimal harga))
+            if (!int.TryParse(txtStok.Text, out int jumlahOlah) || jumlahOlah <= 0)
             {
-                MessageBox.Show("Harga harus berupa angka!");
+                MessageBox.Show("Jumlah olah harus berupa angka > 0!", "Peringatan",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (!int.TryParse(txtStok.Text, out int stok))
+
+            if (!decimal.TryParse(txtHarga.Text, out decimal hargaPerKg) || hargaPerKg <= 0)
             {
-                MessageBox.Show("Stok harus berupa angka!");
+                MessageBox.Show("Harga harus berupa angka > 0!", "Peringatan",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            string kualitas = cmbKualitas.Text;
+            string namaProduk = cmbNamaProduk.Text;
+            string statusProduksi = cmbStatusProduksi.Text;
 
             try
             {
                 using var conn = DBConnection.GetConnection();
                 conn.Open();
-                var cmd = new NpgsqlCommand(
-                    "UPDATE produk SET nama_produk=@n, harga=@h, stok=@s, kualitas=@k WHERE id_produk=@id", conn);
-                cmd.Parameters.AddWithValue("n", cmbNamaProduk.Text);
-                cmd.Parameters.AddWithValue("h", harga);
-                cmd.Parameters.AddWithValue("s", stok);
-                cmd.Parameters.AddWithValue("k", cmbKualitas.Text);
-                cmd.Parameters.AddWithValue("id", id);
-                cmd.ExecuteNonQuery();
 
-                MessageBox.Show("Data produk berhasil diupdate!");
+                // Cari id_panen yang stoknya cukup
+                var cmdGetId = new NpgsqlCommand(
+                    "SELECT id_panen FROM panen " +
+                    "WHERE kualitas = @kualitas::kualitas_enum " +
+                    "AND status_verifikasi = 'Terverifikasi' " +
+                    "AND jumlah_panen >= @jumlah " +
+                    "ORDER BY id_panen LIMIT 1", conn);
+                cmdGetId.Parameters.AddWithValue("kualitas", kualitas);
+                cmdGetId.Parameters.AddWithValue("jumlah", (decimal)jumlahOlah);
+
+                object result = cmdGetId.ExecuteScalar();
+                if (result == null)
+                {
+                    MessageBox.Show("Tidak ada stok panen yang cukup untuk diolah!",
+                        "Stok Tidak Cukup", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                int idPanen = Convert.ToInt32(result);
+
+                // Insert ke tabel produksi (harga ikut disimpan)
+                var cmdInsert = new NpgsqlCommand(
+                    "INSERT INTO produksi (id_panen, nama_produk, jumlah_diolah, status_produksi, kualitas, harga) " +
+                    "VALUES (@id, @nama, @jumlah, @status, @kualitas, @harga)", conn);
+
+                cmdInsert.Parameters.AddWithValue("id", idPanen);
+                cmdInsert.Parameters.AddWithValue("nama", namaProduk);
+                cmdInsert.Parameters.AddWithValue("jumlah", (decimal)jumlahOlah);
+                cmdInsert.Parameters.AddWithValue("status", statusProduksi);
+                cmdInsert.Parameters.AddWithValue("kualitas", kualitas);
+                cmdInsert.Parameters.AddWithValue("harga", hargaPerKg);
+                cmdInsert.ExecuteNonQuery();
+
+                // Update stok panen mentah
+                var cmdUpdate = new NpgsqlCommand(
+                    "UPDATE panen SET jumlah_panen = jumlah_panen - @jumlah " +
+                    "WHERE id_panen = @id", conn);
+                cmdUpdate.Parameters.AddWithValue("jumlah", (decimal)jumlahOlah);
+                cmdUpdate.Parameters.AddWithValue("id", idPanen);
+                cmdUpdate.ExecuteNonQuery();
+
+                // Jika status Siap Jual → masuk ke tabel produk otomatis
+                if (statusProduksi == "Siap Jual")
+                {
+                    var cmdProduk = new NpgsqlCommand(
+                        "INSERT INTO produk (nama_produk, stok, harga, kualitas, status_verifikasi) " +
+                        "VALUES (@nama, @stok, @harga, @kual, 'Siap Jual') " +
+                        "ON CONFLICT (nama_produk, kualitas) DO UPDATE " +
+                        "SET stok = produk.stok + @stok, harga = @harga", conn);
+
+                    cmdProduk.Parameters.AddWithValue("nama", namaProduk);
+                    cmdProduk.Parameters.AddWithValue("stok", (decimal)jumlahOlah);
+                    cmdProduk.Parameters.AddWithValue("harga", hargaPerKg);
+                    cmdProduk.Parameters.AddWithValue("kual", kualitas);
+                    cmdProduk.ExecuteNonQuery();
+
+                    MessageBox.Show("Panen berhasil diolah dan masuk ke stok produk siap jual!",
+                        "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show($"Panen berhasil diolah menjadi {namaProduk}. Status: {statusProduksi}",
+                        "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
                 LoadData();
+                ClearForm();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Error olah panen: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        // Update Status Produksi/Verifikasi saja
-        private void btnUpdateStatus_Click(object sender, EventArgs e)
+
+        private void ClearForm()
         {
-            if (dgvProduk.CurrentRow == null)
-            {
-                MessageBox.Show("Pilih data dulu!");
-                return;
-            }
-
-            int id = Convert.ToInt32(dgvProduk.CurrentRow.Cells[0].Value);
-
-            try
-            {
-                using var conn = DBConnection.GetConnection();
-                conn.Open();
-                var cmd = new NpgsqlCommand(
-                    "UPDATE produk SET status_verifikasi=@sv WHERE id_produk=@id", conn);
-                cmd.Parameters.AddWithValue("sv", cmbStatusProduksi.Text);
-                cmd.Parameters.AddWithValue("id", id);
-                cmd.ExecuteNonQuery();
-
-                MessageBox.Show("Status produk berhasil diupdate!");
-                LoadData();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
+            txtStok.Clear();
+            txtHarga.Clear();
+            cmbKualitas.SelectedIndex = -1;
+            cmbNamaProduk.SelectedIndex = -1;
+            cmbStatusProduksi.SelectedIndex = -1;
         }
 
-        private void btnHapus_Click(object sender, EventArgs e)
-        {
-            if (dgvProduk.CurrentRow == null) return;
-            int id = Convert.ToInt32(dgvProduk.CurrentRow.Cells[0].Value);
-            try
-            {
-                using var conn = DBConnection.GetConnection();
-                conn.Open();
-                var cmd = new NpgsqlCommand("DELETE FROM produk WHERE id_produk=@id", conn);
-                cmd.Parameters.AddWithValue("id", id);
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Produk berhasil dihapus!");
-                LoadData();
-            }
-            catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
-        }
+        private void btnKeluar_Click(object sender, EventArgs e) { this.Close(); }
 
-        private void btnRefresh_Click(object sender, EventArgs e) => LoadData();
-
-        private void btnKeluar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        // Event handler kosong agar Designer tidak error
-        private void txtNamaProduk_TextChanged(object sender, EventArgs e) { }
+        // Event kosong biar Designer aman
+        private void dgvProduk_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
         private void txtHarga_TextChanged(object sender, EventArgs e) { }
         private void txtStok_TextChanged(object sender, EventArgs e) { }
         private void cmbKualitas_SelectedIndexChanged(object sender, EventArgs e) { }
