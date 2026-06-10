@@ -31,6 +31,8 @@
             dgvProduk = new DataGridView();
             label1 = new Label();
             panel1 = new Panel();
+            label6 = new Label();
+            cmbKualitas = new ComboBox();
             btnRefresh = new Button();
             label5 = new Label();
             cmbNamaProduk = new ComboBox();
@@ -46,8 +48,6 @@
             btnKeluar = new Button();
             btnNota = new Button();
             btnBeli = new Button();
-            cmbKualitas = new ComboBox();
-            label6 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvProduk).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -95,6 +95,24 @@
             panel1.Size = new Size(742, 259);
             panel1.TabIndex = 2;
             panel1.Paint += panel1_Paint;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(14, 154);
+            label6.Name = "label6";
+            label6.Size = new Size(61, 20);
+            label6.TabIndex = 14;
+            label6.Text = "Kualitas";
+            // 
+            // cmbKualitas
+            // 
+            cmbKualitas.FormattingEnabled = true;
+            cmbKualitas.Items.AddRange(new object[] { "Sangat Baik", "Bagus ", "Kurang Baik", "Bosok" });
+            cmbKualitas.Location = new Point(14, 177);
+            cmbKualitas.Name = "cmbKualitas";
+            cmbKualitas.Size = new Size(311, 28);
+            cmbKualitas.TabIndex = 13;
             // 
             // btnRefresh
             // 
@@ -234,29 +252,11 @@
             btnBeli.UseVisualStyleBackColor = true;
             btnBeli.Click += btnBeli_Click_1;
             // 
-            // cmbKualitas
-            // 
-            cmbKualitas.FormattingEnabled = true;
-            cmbKualitas.Items.AddRange(new object[] { "Sangat Baik", "Bagus ", "Kurang Baik", "Bosok" });
-            cmbKualitas.Location = new Point(14, 177);
-            cmbKualitas.Name = "cmbKualitas";
-            cmbKualitas.Size = new Size(311, 28);
-            cmbKualitas.TabIndex = 13;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(14, 154);
-            label6.Name = "label6";
-            label6.Size = new Size(61, 20);
-            label6.TabIndex = 14;
-            label6.Text = "Kualitas";
-            // 
             // FormCustomer
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(807, 450);
             Controls.Add(panel1);
             Controls.Add(label1);
             Controls.Add(dgvProduk);

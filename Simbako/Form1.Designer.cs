@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             lbUsername = new Label();
             txtUsername = new TextBox();
             label2 = new Label();
@@ -84,6 +85,7 @@
             // 
             // txtPassword
             // 
+            txtPassword.BackColor = Color.AliceBlue;
             txtPassword.Location = new Point(108, 73);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(514, 27);
@@ -91,7 +93,7 @@
             // 
             // btnLogin
             // 
-            btnLogin.BackColor = Color.Lime;
+            btnLogin.BackColor = Color.DarkSeaGreen;
             btnLogin.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLogin.Location = new Point(528, 112);
             btnLogin.Name = "btnLogin";
@@ -113,14 +115,15 @@
             // 
             // panel1
             // 
+            panel1.BackgroundImageLayout = ImageLayout.Center;
             panel1.Controls.Add(lbUsername);
             panel1.Controls.Add(lbPassword);
             panel1.Controls.Add(btnLogin);
             panel1.Controls.Add(txtUsername);
             panel1.Controls.Add(txtPassword);
-            panel1.Location = new Point(12, 99);
+            panel1.Location = new Point(17, 111);
             panel1.Name = "panel1";
-            panel1.Size = new Size(645, 167);
+            panel1.Size = new Size(653, 248);
             panel1.TabIndex = 7;
             panel1.Paint += panel1_Paint;
             // 
@@ -158,10 +161,12 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(281, 9);
+            label3.BackColor = Color.Transparent;
+            label3.Font = new Font("Segoe UI", 28F, FontStyle.Bold);
+            label3.ForeColor = SystemColors.ControlLightLight;
+            label3.Location = new Point(227, -4);
             label3.Name = "label3";
-            label3.Size = new Size(88, 23);
+            label3.Size = new Size(242, 62);
             label3.TabIndex = 9;
             label3.Text = "SIMBAKO";
             label3.TextAlign = ContentAlignment.MiddleCenter;
@@ -170,13 +175,16 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Berlin Sans FB", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(165, 32);
+            label4.BackColor = Color.YellowGreen;
+            label4.Font = new Font("Segoe UI Variable Display", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.Black;
+            label4.Location = new Point(219, 59);
             label4.Name = "label4";
-            label4.Size = new Size(328, 23);
+            label4.Size = new Size(250, 20);
             label4.TabIndex = 10;
             label4.Text = "SISTEM PENGELOLAHAN TEMBAKAU";
             label4.TextAlign = ContentAlignment.MiddleCenter;
+            label4.Click += label4_Click;
             // 
             // Form1
             // 
@@ -184,15 +192,19 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoValidate = AutoValidate.EnableAllowFocusChange;
+            BackColor = Color.DarkOliveGreen;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Stretch;
+            CausesValidation = false;
             ClientSize = new Size(682, 353);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label1);
             Controls.Add(lb);
             Controls.Add(btnCustomer);
-            Controls.Add(panel1);
             Controls.Add(btnPetani);
             Controls.Add(label2);
+            Controls.Add(panel1);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SIMBAKO - Login Admin";
