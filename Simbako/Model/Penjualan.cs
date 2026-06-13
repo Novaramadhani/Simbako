@@ -1,10 +1,17 @@
 ﻿using System;
 
-namespace Simbako
+namespace Simbako.Model
 {
     public class Penjualan
     {
-        public decimal Jumlah { get; set; }
+        public int IdPenjualan { get; set; } = 0;
+        public string NamaCustomer { get; set; } = string.Empty;
+        public string NoHP { get; set; } = string.Empty;
+        public string NamaProduk { get; set; } = string.Empty;
+        public string Kualitas { get; set; } = string.Empty;
+        public decimal Jumlah { get; set; } = 0;
+        public decimal TotalHarga { get; set; } = 0;
+        public DateTime TanggalPenjualan { get; set; } = DateTime.MinValue;
 
         public decimal BuatTransaksi(decimal hargaSatuan, decimal jumlah)
         {

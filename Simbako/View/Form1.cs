@@ -1,3 +1,4 @@
+using Simbako.Repository;
 using System;
 using System.Windows.Forms;
 
@@ -5,30 +6,14 @@ namespace Simbako
 {
     public partial class Form1 : Form
     {
+        private readonly Form1Repository repo;
+
         public Form1()
         {
             InitializeComponent();
+            repo = new Form1Repository();
         }
 
-        // Wajib ada - Designer: label1_Click (dipakai lbUsername dan lb)
-        private void label1_Click(object sender, EventArgs e) { }
-
-        // Wajib ada - Designer: label2_Click
-        private void label2_Click(object sender, EventArgs e) { }
-
-        // Wajib ada - Designer: lbPassword_Click
-        private void lbPassword_Click(object sender, EventArgs e) { }
-
-        // Wajib ada - Designer: panel1_Paint
-        private void panel1_Paint(object sender, PaintEventArgs e) { }
-
-        // Wajib ada - Designer: label1_Click_1 (dipakai lb)
-        private void label1_Click_1(object sender, EventArgs e) { }
-
-        // Wajib ada - Designer: label3_Click
-        private void label3_Click(object sender, EventArgs e) { }
-
-        // Tombol Login
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtUsername.Text) || string.IsNullOrEmpty(txtPassword.Text))
@@ -38,8 +23,7 @@ namespace Simbako
                 return;
             }
 
-            Admin admin = new Admin();
-            if (admin.Login(txtUsername.Text, txtPassword.Text))
+            if (repo.Login(txtUsername.Text, txtPassword.Text))
             {
                 MessageBox.Show("Login berhasil!", "Sukses",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -54,7 +38,6 @@ namespace Simbako
             }
         }
 
-        // Wajib ada - Designer: btnPetani.Click += button1_Click (BUKAN btnPetani_Click!)
         private void button1_Click(object sender, EventArgs e)
         {
             FormPetani formPetani = new FormPetani();
@@ -62,7 +45,6 @@ namespace Simbako
             this.Hide();
         }
 
-        // Tombol Customer
         private void btnCustomer_Click(object sender, EventArgs e)
         {
             FormCustomer formCustomer = new FormCustomer();
@@ -70,14 +52,14 @@ namespace Simbako
             this.Hide();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
+        // Event kosong biar Designer aman
+        private void Form1_Load(object sender, EventArgs e) { }
+        private void label1_Click(object sender, EventArgs e) { }
+        private void label2_Click(object sender, EventArgs e) { }
+        private void lbPassword_Click(object sender, EventArgs e) { }
+        private void panel1_Paint(object sender, PaintEventArgs e) { }
+        private void label1_Click_1(object sender, EventArgs e) { }
+        private void label3_Click(object sender, EventArgs e) { }
+        private void label4_Click(object sender, EventArgs e) { }
     }
 }

@@ -36,9 +36,6 @@
             btnRefresh = new Button();
             label5 = new Label();
             cmbNamaProduk = new ComboBox();
-            panel2 = new Panel();
-            lblTotal = new Label();
-            lblHarga = new Label();
             txtNoHP = new TextBox();
             txtJumlah = new TextBox();
             txtNama = new TextBox();
@@ -50,7 +47,6 @@
             btnBeli = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvProduk).BeginInit();
             panel1.SuspendLayout();
-            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // dgvProduk
@@ -80,7 +76,6 @@
             panel1.Controls.Add(btnRefresh);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(cmbNamaProduk);
-            panel1.Controls.Add(panel2);
             panel1.Controls.Add(txtNoHP);
             panel1.Controls.Add(txtJumlah);
             panel1.Controls.Add(txtNama);
@@ -108,7 +103,7 @@
             // cmbKualitas
             // 
             cmbKualitas.FormattingEnabled = true;
-            cmbKualitas.Items.AddRange(new object[] { "Sangat Baik", "Bagus ", "Kurang Baik", "Bosok" });
+            cmbKualitas.Items.AddRange(new object[] { "Sangat Baik", "Bagus ", "Kurang Baik", "Busuk" });
             cmbKualitas.Location = new Point(14, 177);
             cmbKualitas.Name = "cmbKualitas";
             cmbKualitas.Size = new Size(311, 28);
@@ -141,35 +136,6 @@
             cmbNamaProduk.Size = new Size(367, 28);
             cmbNamaProduk.TabIndex = 10;
             cmbNamaProduk.SelectedIndexChanged += cmbNamaProduk_SelectedIndexChanged;
-            // 
-            // panel2
-            // 
-            panel2.Controls.Add(lblTotal);
-            panel2.Controls.Add(lblHarga);
-            panel2.Location = new Point(354, 152);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(370, 53);
-            panel2.TabIndex = 9;
-            // 
-            // lblTotal
-            // 
-            lblTotal.AutoSize = true;
-            lblTotal.Location = new Point(3, 30);
-            lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(53, 20);
-            lblTotal.TabIndex = 1;
-            lblTotal.Text = "Total : ";
-            lblTotal.Click += label6_Click;
-            // 
-            // lblHarga
-            // 
-            lblHarga.AutoSize = true;
-            lblHarga.Location = new Point(3, 10);
-            lblHarga.Name = "lblHarga";
-            lblHarga.Size = new Size(57, 20);
-            lblHarga.TabIndex = 0;
-            lblHarga.Text = "Harga :";
-            lblHarga.Click += lblHarga_Click;
             // 
             // txtNoHP
             // 
@@ -265,8 +231,6 @@
             ((System.ComponentModel.ISupportInitialize)dgvProduk).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -285,9 +249,6 @@
         private Button btnKeluar;
         private Button btnNota;
         private Button btnBeli;
-        private Panel panel2;
-        private Label lblTotal;
-        private Label lblHarga;
         private Label label5;
         private ComboBox cmbNamaProduk;
         private Button btnRefresh;

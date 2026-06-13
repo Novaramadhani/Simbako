@@ -126,7 +126,7 @@
             Name = "FormDashboardAdmin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SIMBAKO - Dashboard Admin";
-            Load += Form2_Load;
+            Load += FormDashboardAdmin_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             flowLayoutPanel2.ResumeLayout(false);

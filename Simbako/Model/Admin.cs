@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Simbako.DatabaseHellper;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 // File: Admin.cs
-namespace Simbako
+namespace Simbako.Model
 {
     public class Admin : User
     {

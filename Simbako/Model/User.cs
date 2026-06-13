@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 // File: User.cs
-namespace Simbako
+namespace Simbako.Model
 {
     public abstract class User
     {

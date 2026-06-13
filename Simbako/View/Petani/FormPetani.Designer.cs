@@ -114,7 +114,7 @@
             // cmbKualitas
             // 
             cmbKualitas.FormattingEnabled = true;
-            cmbKualitas.Items.AddRange(new object[] { "Sangat Baik", "Bagus", "Kurang Baik", "Bosok" });
+            cmbKualitas.Items.AddRange(new object[] { "Sangat Baik", "Bagus", "Kurang Baik", "Busuk" });
             cmbKualitas.Location = new Point(364, 131);
             cmbKualitas.Name = "cmbKualitas";
             cmbKualitas.Size = new Size(319, 28);
@@ -181,6 +181,7 @@
             dgvRiwayatPanen.RowHeadersWidth = 51;
             dgvRiwayatPanen.Size = new Size(723, 116);
             dgvRiwayatPanen.TabIndex = 12;
+            dgvRiwayatPanen.CellContentClick += dgvRiwayatPanen_CellContentClick;
             // 
             // label6
             // 

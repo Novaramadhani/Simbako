@@ -1,29 +1,70 @@
-﻿using Npgsql;
-using Simbako.Model;
-using System.Collections.Generic;
+﻿using Simbako.Model;
+using Simbako.DatabaseHellper;
+using Npgsql;
+using System;
+using System.Data;
 
 namespace Simbako.Repository
 {
     public class PetaniRepository
     {
-        public List<Petani> GetAll()
+        // ✅ Load semua riwayat panen
+        public DataTable GetRiwayatPanen()
         {
-            var list = new List<Petani>();
             using var conn = DBConnection.GetConnection();
             conn.Open();
-            var cmd = new NpgsqlCommand("SELECT id_petani, nama_petani, alamat, no_hp FROM petani", conn);
-            using var reader = cmd.ExecuteReader();
-            while (reader.Read())
+            string query = @"
+                SELECT p.id_panen, pt.nama_petani, p.tanggal_panen,
+                       p.jumlah_panen, p.kualitas, p.status_verifikasi
+                FROM panen p
+                JOIN petani pt ON p.id_petani = pt.id_petani
+                ORDER BY p.tanggal_panen DESC
+                LIMIT 50";
+            var cmd = new NpgsqlCommand(query, conn);
+            var adapter = new NpgsqlDataAdapter(cmd);
+            var dt = new DataTable();
+            adapter.Fill(dt);
+            return dt;
+        }
+
+        // ✅ Simpan petani baru atau ambil id kalau sudah ada
+        public int GetOrCreatePetani(string namaPetani)
+        {
+            using var conn = DBConnection.GetConnection();
+            conn.Open();
+
+            var cmdPetani = new NpgsqlCommand(
+                "INSERT INTO petani (nama_petani) VALUES (@n) ON CONFLICT DO NOTHING RETURNING id_petani",
+                conn);
+            cmdPetani.Parameters.AddWithValue("n", namaPetani);
+            var idObj = cmdPetani.ExecuteScalar();
+
+            if (idObj == null)
             {
-                list.Add(new Petani
-                {
-                    IdPetani = reader.GetInt32(0),
-                    NamaPetani = reader.GetString(1),
-                    Alamat = reader.IsDBNull(2) ? "" : reader.GetString(2),
-                    NoHP = reader.IsDBNull(3) ? "" : reader.GetString(3)
-                });
+                var cmdGet = new NpgsqlCommand(
+                    "SELECT id_petani FROM petani WHERE nama_petani=@n LIMIT 1", conn);
+                cmdGet.Parameters.AddWithValue("n", namaPetani);
+                idObj = cmdGet.ExecuteScalar();
             }
-            return list;
+
+            return Convert.ToInt32(idObj);
+        }
+
+        // ✅ Simpan data panen (kualitas cast ke enum)
+        public void InsertPanen(int idPetani, DateTime tanggal, decimal jumlah, string kualitas)
+        {
+            using var conn = DBConnection.GetConnection();
+            conn.Open();
+
+            var cmdPanen = new NpgsqlCommand(@"
+                INSERT INTO panen (id_petani, tanggal_panen, jumlah_panen, kualitas)
+                VALUES (@idp, @tgl, @jml, @kual::kualitas_enum)", conn);
+
+            cmdPanen.Parameters.AddWithValue("idp", idPetani);
+            cmdPanen.Parameters.AddWithValue("tgl", tanggal.Date);
+            cmdPanen.Parameters.AddWithValue("jml", jumlah);
+            cmdPanen.Parameters.AddWithValue("kual", kualitas); // harus persis sama dengan enum (Busuk, Bagus, dll)
+            cmdPanen.ExecuteNonQuery();
         }
     }
 }

@@ -1,4 +1,4 @@
-namespace Simbako
+namespace Simbako.Model
 {
     internal static class Program
     {

@@ -1,6 +1,6 @@
 ﻿using Npgsql;
 
-namespace Simbako
+namespace Simbako.DatabaseHellper
 {
     public class DBConnection
     {

@@ -47,6 +47,7 @@
             dgvPanen.Size = new Size(776, 174);
             dgvPanen.TabIndex = 0;
             dgvPanen.CellClick += dgvPanen_CellClick;
+            dgvPanen.CellContentClick += dgvPanen_CellContentClick_1;
             // 
             // panel1
             // 
@@ -149,7 +150,7 @@
             // cmbKualitas
             // 
             cmbKualitas.FormattingEnabled = true;
-            cmbKualitas.Items.AddRange(new object[] { "Sangat Baik", "Bagus", "Kurang Baik", "Bosok" });
+            cmbKualitas.Items.AddRange(new object[] { "Sangat Baik", "Bagus", "Kurang Baik", "Busuk" });
             cmbKualitas.Location = new Point(360, 102);
             cmbKualitas.Name = "cmbKualitas";
             cmbKualitas.Size = new Size(342, 28);

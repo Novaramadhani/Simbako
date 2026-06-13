@@ -41,6 +41,8 @@
             btnHapus = new Button();
             btnRefresh = new Button();
             panel1 = new Panel();
+            label9 = new Label();
+            txtHarga = new TextBox();
             label8 = new Label();
             cmbJenisTembakau = new ComboBox();
             label5 = new Label();
@@ -49,8 +51,6 @@
             txtJumlahDiolah = new TextBox();
             btnKeluar = new Button();
             cmbJenisProses = new ComboBox();
-            txtHarga = new TextBox();
-            label9 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvProduksi).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -204,6 +204,24 @@
             panel1.Size = new Size(938, 298);
             panel1.TabIndex = 13;
             // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI Emoji", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.Location = new Point(12, 190);
+            label9.Name = "label9";
+            label9.Size = new Size(55, 20);
+            label9.TabIndex = 25;
+            label9.Text = "Harga";
+            // 
+            // txtHarga
+            // 
+            txtHarga.Location = new Point(12, 213);
+            txtHarga.Name = "txtHarga";
+            txtHarga.Size = new Size(416, 27);
+            txtHarga.TabIndex = 23;
+            txtHarga.TextChanged += textBox1_TextChanged_2;
+            // 
             // label8
             // 
             label8.AutoSize = true;
@@ -237,7 +255,7 @@
             // cmbKualitas
             // 
             cmbKualitas.FormattingEnabled = true;
-            cmbKualitas.Items.AddRange(new object[] { "Sangat Baik", "Bagus", "Kurang Baik", "Bosok" });
+            cmbKualitas.Items.AddRange(new object[] { "Sangat Baik", "Bagus", "Kurang Baik", "Busuk" });
             cmbKualitas.Location = new Point(453, 158);
             cmbKualitas.Name = "cmbKualitas";
             cmbKualitas.Size = new Size(416, 28);
@@ -281,24 +299,6 @@
             cmbJenisProses.Size = new Size(416, 28);
             cmbJenisProses.TabIndex = 13;
             cmbJenisProses.SelectedIndexChanged += cmbJenisProses_SelectedIndexChanged;
-            // 
-            // txtHarga
-            // 
-            txtHarga.Location = new Point(12, 213);
-            txtHarga.Name = "txtHarga";
-            txtHarga.Size = new Size(416, 27);
-            txtHarga.TabIndex = 23;
-            txtHarga.TextChanged += textBox1_TextChanged_2;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI Emoji", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.Location = new Point(12, 190);
-            label9.Name = "label9";
-            label9.Size = new Size(55, 20);
-            label9.TabIndex = 25;
-            label9.Text = "Harga";
             // 
             // FormProduksi
             // 

@@ -168,7 +168,7 @@
             // cmbKualitas
             // 
             cmbKualitas.FormattingEnabled = true;
-            cmbKualitas.Items.AddRange(new object[] { "Sangat Baik", "Bagus", "Kurang Baik", "Bosok" });
+            cmbKualitas.Items.AddRange(new object[] { "Sangat Baik", "Bagus", "Kurang Baik", "Busuk" });
             cmbKualitas.Location = new Point(362, 327);
             cmbKualitas.Name = "cmbKualitas";
             cmbKualitas.Size = new Size(382, 28);
