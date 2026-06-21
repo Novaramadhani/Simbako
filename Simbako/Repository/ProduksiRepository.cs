@@ -8,7 +8,7 @@ namespace Simbako.Repository
 {
     public class ProduksiRepository
     {
-        // ✅ Ambil panen terverifikasi untuk combo
+        //  Ambil panen terverifikasi untuk combo
         public List<Panen> GetPanenTerverifikasi()
         {
             var list = new List<Panen>();
@@ -33,7 +33,7 @@ namespace Simbako.Repository
             return list;
         }
 
-        // ✅ Ambil semua data produksi
+        //  Ambil semua data produksi
         public List<Produksi> GetAllProduksi()
         {
             var list = new List<Produksi>();
@@ -65,7 +65,7 @@ namespace Simbako.Repository
             return list;
         }
 
-        // ✅ Insert produksi baru
+        //  Insert produksi baru
         public void InsertProduksi(int idPanen, string namaProduk, string jenisProses,
                                    int jumlahDiolah, decimal? hasilProduksi,
                                    string statusProduksi, string kualitas, decimal? hargaPerKg)
@@ -90,7 +90,7 @@ namespace Simbako.Repository
             cmdInsert.ExecuteNonQuery();
         }
 
-        // ✅ Update produksi
+        //  Update produksi
         public void UpdateProduksi(int idProduksi, string namaProduk, string jenisProses,
                                    decimal? hasilProduksi, string statusProduksi,
                                    string kualitas, decimal? hargaPerKg)
@@ -119,7 +119,7 @@ namespace Simbako.Repository
             cmdUpdate.ExecuteNonQuery();
         }
 
-        // ✅ Update stok produk setelah hasil produksi masuk
+        //  Update stok produk setelah hasil produksi masuk
         public void UpdateStokProduk(string namaProduk, string kualitas, decimal hasilProduksi, decimal? hargaPerKg = null)
         {
             using var conn = DBConnection.GetConnection();
@@ -137,7 +137,7 @@ namespace Simbako.Repository
             cmd.ExecuteNonQuery();
         }
 
-        // ✅ Ambil hasil produksi lama
+        //  Ambil hasil produksi lama
         public decimal GetHasilProduksiLama(int idProduksi)
         {
             using var conn = DBConnection.GetConnection();
@@ -152,7 +152,7 @@ namespace Simbako.Repository
             return result == null ? 0 : Convert.ToDecimal(result);
         }
 
-        // ✅ Edit produksi (update + sesuaikan stok)
+        //  Edit produksi (update + sesuaikan stok)
         public void EditProduksi(int idProduksi, string namaProduk, string jenisProses,
                                  int jumlahDiolah, decimal? hasilBaru,
                                  string status, string kualitas, decimal? harga,
@@ -197,7 +197,7 @@ namespace Simbako.Repository
             }
         }
 
-        // ✅ Hapus produksi
+        //  Hapus produksi
         public bool DeleteProduksi(int idProduksi)
         {
             using var conn = DBConnection.GetConnection();

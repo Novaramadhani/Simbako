@@ -21,13 +21,13 @@ namespace Simbako
             LoadLapPanen();
         }
 
-        // ✅ Tombol langsung panggil fungsi
+        //  Tombol langsung panggil fungsi
         private void btnLapPanen_Click(object sender, EventArgs e) => LoadLapPanen();
         private void btnLapProduksi_Click(object sender, EventArgs e) => LoadLapProduksi();
         private void btnLapPenjualan_Click(object sender, EventArgs e) => LoadLapPenjualan();
         private void btnLapStok_Click(object sender, EventArgs e) => LoadLapStok();
 
-        // ✅ Laporan Panen
+        //  Laporan Panen
         private void LoadLapPanen()
         {
             var data = repo.GetLapPanen(dtpDari.Value, dtpSampai.Value);
@@ -40,7 +40,7 @@ namespace Simbako
             dgvLapPanen.Columns[4].HeaderText = "Status";
         }
 
-        // ✅ Laporan Produksi
+        //  Laporan Produksi
         private void LoadLapProduksi()
         {
             var data = repo.GetLapProduksi(dtpDari.Value, dtpSampai.Value);
@@ -55,7 +55,7 @@ namespace Simbako
             dgvLapProduksi.Columns[6].HeaderText = "Tanggal";
         }
 
-        // ✅ Laporan Penjualan
+        //  Laporan Penjualan
         private void LoadLapPenjualan()
         {
             var data = repo.GetLapPenjualan(dtpDari.Value, dtpSampai.Value);
@@ -69,7 +69,7 @@ namespace Simbako
             dgvLapPenjualan.Columns[5].HeaderText = "Total Harga (Rp)";
         }
 
-        // ✅ Laporan Stok
+        //  Laporan Stok
         private void LoadLapStok()
         {
             var data = repo.GetLapStok();
@@ -83,12 +83,17 @@ namespace Simbako
             dgvLapStok.Columns[5].HeaderText = "Status";
         }
 
-        // ✅ Tambahan untuk menghindari error Designer
+        //  Tambahan untuk menghindari error Designer
         private void dgvLapPanen_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
         private void dgvLapPenjualan_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
         private void dgvLapStok_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
         private void dgvLapProduksi_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
 
         private void btnKeluar_Click(object sender, EventArgs e) => this.Close();
+
+        private void dtpDari_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

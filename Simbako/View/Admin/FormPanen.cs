@@ -19,7 +19,7 @@ namespace Simbako
         private void FormPanen_Load(object sender, EventArgs e)
         {
             cmbKualitas.Items.Clear();
-            // ✅ Nilai persis sama dengan enum di DB
+            //  Nilai persis sama dengan enum di DB
             cmbKualitas.Items.AddRange(new string[] { "Sangat Baik", "Bagus", "Kurang Baik", "Busuk" });
             LoadData();
         }
@@ -139,5 +139,21 @@ namespace Simbako
         private void label4_Click(object sender, EventArgs e) { }
         private void dgvPanen_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
         private void dgvPanen_CellContentClick_1(object sender, DataGridViewCellEventArgs e) { }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
+

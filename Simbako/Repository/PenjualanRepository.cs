@@ -8,7 +8,7 @@ namespace Simbako.Repository
 {
     public class PenjualanRepository
     {
-        // ✅ Ambil daftar produk (nama saja untuk ComboBox)
+        //  Ambil daftar produk (nama saja untuk ComboBox)
         public List<string> GetProdukList()
         {
             var list = new List<string>();
@@ -23,7 +23,7 @@ namespace Simbako.Repository
             return list;
         }
 
-        // ✅ Ambil daftar kualitas (untuk ComboBox)
+        //  Ambil daftar kualitas (untuk ComboBox)
         public List<string> GetKualitasList()
         {
             var list = new List<string>();
@@ -38,7 +38,7 @@ namespace Simbako.Repository
             return list;
         }
 
-        // ✅ Ambil harga produk sesuai nama + kualitas
+        //  Ambil harga produk sesuai nama + kualitas
         public decimal? GetHarga(string namaProduk, string kualitas)
         {
             using var conn = DBConnection.GetConnection();
@@ -52,7 +52,7 @@ namespace Simbako.Repository
             return result == null ? null : Convert.ToDecimal(result);
         }
 
-        // ✅ Ambil atau buat customer
+        //  Ambil atau buat customer
         public int GetOrCreateCustomer(string nama, string noHp)
         {
             using var conn = DBConnection.GetConnection();
@@ -75,7 +75,7 @@ namespace Simbako.Repository
             return Convert.ToInt32(idCust);
         }
 
-        // ✅ Ambil id_produk
+        //  Ambil id_produk
         public int? GetIdProduk(string namaProduk)
         {
             using var conn = DBConnection.GetConnection();
@@ -86,7 +86,7 @@ namespace Simbako.Repository
             return result == null ? null : Convert.ToInt32(result);
         }
 
-        // ✅ Insert penjualan baru
+        //  Insert penjualan baru
         public void InsertPenjualan(int idCustomer, int idProduk, string kualitas,
                                     decimal jumlah, decimal total, DateTime tanggal)
         {
@@ -105,7 +105,7 @@ namespace Simbako.Repository
             cmd.ExecuteNonQuery();
         }
 
-        // ✅ Update penjualan lama
+        //  Update penjualan lama
         public void UpdatePenjualan(int idPenjualan, int idCustomer, int idProduk, string kualitas,
                                     decimal jumlah, decimal total, DateTime tanggal)
         {
@@ -131,7 +131,7 @@ namespace Simbako.Repository
             cmd.ExecuteNonQuery();
         }
 
-        // ✅ Hapus penjualan
+        //  Hapus penjualan
         public void DeletePenjualan(int idPenjualan)
         {
             using var conn = DBConnection.GetConnection();
@@ -141,7 +141,7 @@ namespace Simbako.Repository
             cmd.ExecuteNonQuery();
         }
 
-        // ✅ Ambil semua data penjualan
+        //  Ambil semua data penjualan
         public List<Penjualan> GetAllPenjualan()
         {
             var list = new List<Penjualan>();

@@ -4,22 +4,22 @@ using Npgsql;
 
 namespace Simbako.Repository
 {
-    public class AdminRepository
-    {
-        // ✅ Login admin
-        public bool Login(string username, string password)
+        public class AdminRepository
         {
-            using var conn = DBConnection.GetConnection();
-            conn.Open();
-            var cmd = new NpgsqlCommand(
-                "SELECT COUNT(*) FROM admin WHERE username=@u AND password=@p", conn);
-            cmd.Parameters.AddWithValue("u", username);
-            cmd.Parameters.AddWithValue("p", password);
+            //  Login admin
+            public bool Login(string username, string password)
+            {
+                using var conn = DBConnection.GetConnection();
+                conn.Open();
+                var cmd = new NpgsqlCommand(
+                    "SELECT COUNT(*) FROM admin WHERE username=@u AND password=@p", conn);
+                cmd.Parameters.AddWithValue("u", username);
+                cmd.Parameters.AddWithValue("p", password);
 
-            return Convert.ToInt32(cmd.ExecuteScalar()) > 0;
-        }
+                return Convert.ToInt32(cmd.ExecuteScalar()) > 0;
+            }
 
-        // ✅ Ambil data admin (opsional)
+        //  Ambil data admin (opsional)
         public Admin? GetAdmin(string username)
         {
             using var conn = DBConnection.GetConnection();

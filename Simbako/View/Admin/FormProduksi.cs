@@ -240,5 +240,31 @@ namespace Simbako
         private void dgvProduksi_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
         private void txtHasil_TextChanged(object sender, EventArgs e) { }
         private void textBox1_TextChanged_2(object sender, EventArgs e) { }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
+

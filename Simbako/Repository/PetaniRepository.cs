@@ -8,7 +8,7 @@ namespace Simbako.Repository
 {
     public class PetaniRepository
     {
-        // ✅ Load semua riwayat panen
+        // Load semua riwayat panen
         public DataTable GetRiwayatPanen()
         {
             using var conn = DBConnection.GetConnection();
@@ -27,7 +27,7 @@ namespace Simbako.Repository
             return dt;
         }
 
-        // ✅ Simpan petani baru atau ambil id kalau sudah ada
+        // Simpan petani baru atau ambil id kalau sudah ada
         public int GetOrCreatePetani(string namaPetani)
         {
             using var conn = DBConnection.GetConnection();
@@ -50,7 +50,7 @@ namespace Simbako.Repository
             return Convert.ToInt32(idObj);
         }
 
-        // ✅ Simpan data panen (kualitas cast ke enum)
+        // Simpan data panen (kualitas cast ke enum)
         public void InsertPanen(int idPetani, DateTime tanggal, decimal jumlah, string kualitas)
         {
             using var conn = DBConnection.GetConnection();

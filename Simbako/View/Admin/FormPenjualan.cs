@@ -71,7 +71,7 @@ namespace Simbako
             if (string.IsNullOrEmpty(cmbProduk.Text) || string.IsNullOrEmpty(cmbKualitas.Text))
                 return;
 
-            var kualitasValue = cmbKualitas.Text.Trim(); // ✅ pastikan cocok dengan enum
+            var kualitasValue = cmbKualitas.Text.Trim(); //  pastikan cocok dengan enum
             var harga = repo.GetHarga(cmbProduk.Text, kualitasValue);
             if (harga.HasValue)
             {
@@ -124,7 +124,7 @@ namespace Simbako
                 }
                 decimal total = hargaSatuan * jml;
 
-                var kualitasValue = cmbKualitas.Text.Trim(); // ✅ pastikan cocok dengan enum
+                var kualitasValue = cmbKualitas.Text.Trim(); //  pastikan cocok dengan enum
 
                 if (selectedId == null)
                 {
@@ -212,5 +212,10 @@ namespace Simbako
         private void label7_Click(object sender, EventArgs e) { }
         private void txtTotal_TextChanged(object sender, EventArgs e) { }
         private void dgvPenjualan_CellClick_1(object sender, DataGridViewCellEventArgs e) { }
+
+        private void FormPenjualan_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

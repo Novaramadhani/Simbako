@@ -117,4 +117,182 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Button" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="keluar button5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\keluar button5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="background dashboard petani2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\background dashboard petani2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Refreshbutton3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Refreshbutton3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Refreshbutton" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Refreshbutton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Container (margin)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Container (margin).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Container3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Container3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Refreshbutton2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Refreshbutton2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Contaieeener" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Contaieeener.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Verifikasi button" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Verifikasi button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Sidebar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sidebar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Admin button" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Admin button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="backgroundBelakang" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\backgroundBelakang.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="keluar button2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\keluar button2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Button1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Button1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="background dashboard petani" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\background dashboard petani.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="button customer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\button customer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Button petani" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Button petani.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="simpanButoon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\simpanButoon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="hapu1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hapu1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="updatebutton" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\updatebutton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="simpan transaksi" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\simpan transaksi.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Hitam Oranye Cat Abstrak Logo Kuliner dan Resto(2) 1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Hitam Oranye Cat Abstrak Logo Kuliner dan Resto(2) 1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Containercustomer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Containercustomer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Refreshbutton1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Refreshbutton1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="laporan panen dashboard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\laporan panen dashboard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="hapu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hapu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bg 1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bg 1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Container2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Container2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="keluar button4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\keluar button4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BUtton beli produk" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BUtton beli produk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bgbelakangpetani1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bgbelakangpetani1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="hapubuton" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hapubuton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Sidebar1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sidebar1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="background dashboard petani1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\background dashboard petani1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="kirim dta panen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\kirim dta panen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Laporan Produksi" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Laporan Produksi.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Container" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Container.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="m" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\m.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="laporan Penjualan" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\laporan Penjualan.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Line 11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Line 11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="smpan soal transaksi" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\smpan soal transaksi.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="keluar button1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\keluar button1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="login button" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\login button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Container (margin)1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Container (margin)1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="keluar button3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\keluar button3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="keluar button" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\keluar button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="background" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\background.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="olah data button" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\olah data button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Contaasasiner" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Contaasasiner.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Personal productivity dashboard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Personal productivity dashboard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Container1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Container1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bgbelakangpetani" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bgbelakangpetani.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Personal productivity dashboard1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Personal productivity dashboard1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="simpan button" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\simpan button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Line 1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Line 1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="edit Button" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\edit Button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Laporan Stuck" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Laporan Stuck.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

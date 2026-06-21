@@ -8,7 +8,7 @@ namespace Simbako.Repository
 {
     public class CustomerRepository
     {
-        // ✅ Ambil produk siap jual
+        // Ambil produk siap jual
         public List<Produk> GetProdukSiapJual()
         {
             var list = new List<Produk>();
@@ -35,7 +35,7 @@ namespace Simbako.Repository
             return list;
         }
 
-        // ✅ Ambil harga & stok produk berdasarkan nama_produk + kualitas (baru, untuk opsi B)
+        //  Ambil harga & stok produk berdasarkan nama_produk + kualitas (baru, untuk opsi B)
         public (decimal harga, int stok)? GetHargaStokByNama(string namaProduk, string kualitas)
         {
             using var conn = DBConnection.GetConnection();
@@ -56,7 +56,7 @@ namespace Simbako.Repository
             return null;
         }
 
-        // ✅ Buat customer baru kalau belum ada
+        // Buat customer baru kalau belum ada
         public int GetOrCreateCustomer(string nama, string noHP)
         {
             using var conn = DBConnection.GetConnection();
@@ -80,7 +80,7 @@ namespace Simbako.Repository
             return Convert.ToInt32(cmdInsert.ExecuteScalar());
         }
 
-        // ✅ Insert penjualan + update stok
+        // Insert penjualan + update stok
         public void InsertPenjualan(int idCustomer, int idProduk, decimal jumlah, decimal total, string kualitas)
         {
             using var conn = DBConnection.GetConnection();

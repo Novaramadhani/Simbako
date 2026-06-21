@@ -7,11 +7,11 @@ namespace Simbako.Model
     {
         public int IdPanen { get; set; } = 0;
         public int IdPetani { get; set; }
-        public string NamaPetani { get; set; } = string.Empty; // ✅ Tambah properti nama petani
+        public string NamaPetani { get; set; } = string.Empty; //  Tambah properti nama petani
         public DateTime TanggalPanen { get; set; }
         public decimal JumlahPanen { get; set; } = 0;
         public string Kualitas { get; set; } = string.Empty;
-        public string StatusVerifikasi { get; set; } = string.Empty; // ✅ Pakai status verifikasi saja
+        public string StatusVerifikasi { get; set; } = string.Empty; //  Pakai status verifikasi saja
 
         public decimal HitungTotalPanen(List<Panen> daftarPanen)
         {
@@ -22,3 +22,5 @@ namespace Simbako.Model
         }
     }
 }
+
+

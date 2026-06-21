@@ -32,3 +32,4 @@ Total   : Rp {total:N0}
         }
     }
 }
+

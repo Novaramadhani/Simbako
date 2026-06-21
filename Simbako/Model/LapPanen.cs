@@ -9,3 +9,4 @@
         public string StatusVerifikasi { get; set; } = string.Empty;
     }
 }
+    

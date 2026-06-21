@@ -8,7 +8,7 @@ namespace Simbako.Repository
 {
     public class LaporanRepository
     {
-        // ✅ Laporan Panen
+        //  Laporan Panen
         public List<LapPanen> GetLapPanen(DateTime dari, DateTime sampai)
         {
             var list = new List<LapPanen>();
@@ -40,7 +40,7 @@ namespace Simbako.Repository
             return list;
         }
 
-        // ✅ Laporan Produksi
+        //  Laporan Produksi
         public List<LapProduksi> GetLapProduksi(DateTime dari, DateTime sampai)
         {
             var list = new List<LapProduksi>();
@@ -72,7 +72,7 @@ namespace Simbako.Repository
             return list;
         }
 
-        // ✅ Laporan Penjualan
+        //  Laporan Penjualan
         public List<LapPenjualan> GetLapPenjualan(DateTime dari, DateTime sampai)
         {
             var list = new List<LapPenjualan>();
@@ -105,7 +105,7 @@ namespace Simbako.Repository
             return list;
         }
 
-        // ✅ Laporan Stok
+        //  Laporan Stok
         public List<LapStok> GetLapStok()
         {
             var list = new List<LapStok>();
@@ -132,3 +132,5 @@ namespace Simbako.Repository
         }
     }
 }
+
+

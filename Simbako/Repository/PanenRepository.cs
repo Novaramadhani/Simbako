@@ -8,7 +8,7 @@ namespace Simbako.Repository
 {
     public class PanenRepository
     {
-        // ✅ Ambil semua data panen
+        //  Ambil semua data panen
         public List<Panen> GetAllPanen()
         {
             var list = new List<Panen>();
@@ -36,7 +36,7 @@ namespace Simbako.Repository
             return list;
         }
 
-        // ✅ Ambil atau buat petani
+        //  Ambil atau buat petani
         public int GetOrCreatePetani(string namaPetani)
         {
             using var conn = DBConnection.GetConnection();
@@ -56,7 +56,7 @@ namespace Simbako.Repository
             return Convert.ToInt32(idPetaniObj);
         }
 
-        // ✅ Insert panen baru + otomatis masuk ke produk
+        //  Insert panen baru + otomatis masuk ke produk
         public void InsertPanen(int idPetani, DateTime tanggal, decimal jumlah, string kualitas)
         {
             using var conn = DBConnection.GetConnection();
@@ -80,7 +80,7 @@ namespace Simbako.Repository
             cmdProduk.ExecuteNonQuery();
         }
 
-        // ✅ Update panen
+        //  Update panen
         public void UpdatePanen(int idPanen, DateTime tanggal, decimal jumlah, string kualitas)
         {
             using var conn = DBConnection.GetConnection();
@@ -94,7 +94,7 @@ namespace Simbako.Repository
             cmd.ExecuteNonQuery();
         }
 
-        // ✅ Hapus panen
+        //  Hapus panen
         public void DeletePanen(int idPanen)
         {
             using var conn = DBConnection.GetConnection();
@@ -104,7 +104,7 @@ namespace Simbako.Repository
             cmd.ExecuteNonQuery();
         }
 
-        // ✅ Verifikasi panen → otomatis update produk jadi siap jual
+        //  Verifikasi panen → otomatis update produk jadi siap jual
         public void VerifyPanen(int idPanen)
         {
             using var conn = DBConnection.GetConnection();
@@ -135,3 +135,4 @@ namespace Simbako.Repository
         }
     }
 }
+

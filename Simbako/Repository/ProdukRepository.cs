@@ -8,7 +8,7 @@ namespace Simbako.Repository
 {
     public class ProdukRepository
     {
-        // ✅ Ambil stok panen terverifikasi (group by kualitas + tanggal representatif)
+        //  Ambil stok panen terverifikasi (group by kualitas + tanggal representatif)
         public List<Panen> GetPanenTerverifikasi()
         {
             var list = new List<Panen>();
@@ -37,7 +37,7 @@ namespace Simbako.Repository
             return list;
         }
 
-        // ✅ Cari id_panen yang stoknya cukup
+        //  Cari id_panen yang stoknya cukup
         public int? GetIdPanen(string kualitas, int jumlahOlah)
         {
             using var conn = DBConnection.GetConnection();
@@ -58,7 +58,7 @@ namespace Simbako.Repository
             return result == null ? null : Convert.ToInt32(result);
         }
 
-        // ✅ Insert ke tabel produksi
+        //  Insert ke tabel produksi
         public void InsertProduksi(int idPanen, string namaProduk, int jumlahOlah,
                                    string statusProduksi, string kualitas, decimal hargaPerKg)
         {
@@ -105,3 +105,4 @@ namespace Simbako.Repository
         }
     }
 }
+

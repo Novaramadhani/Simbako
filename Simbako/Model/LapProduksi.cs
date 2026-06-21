@@ -11,3 +11,6 @@
         public DateTime TanggalProduksi { get; set; } = DateTime.MinValue;
     }
 }
+
+
+
